@@ -1,0 +1,7 @@
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CocoaLumberjack" "${PODS_ROOT}/Headers/Public/PubNub" "${PODS_ROOT}/Headers/Public/QBImagePickerController" "${PODS_ROOT}/Headers/Public/WebRTC" ${PODS_ROOT}/WebRTC/include/**
+LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/../../webrtc-ios/lib"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/CocoaLumberjack" -isystem "${PODS_ROOT}/Headers/Public/PubNub" -isystem "${PODS_ROOT}/Headers/Public/QBImagePickerController" -isystem "${PODS_ROOT}/Headers/Public/WebRTC"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-CocoaLumberjack" -l"Pods-PubNub" -l"Pods-QBImagePickerController" -l"System" -l"WebRTC" -l"sqlite3" -l"stdc++" -l"util" -l"z" -framework "AVFoundation" -framework "AssetsLibrary" -framework "AudioToolbox" -framework "CoreGraphics" -framework "CoreLocation" -framework "CoreMedia" -framework "CoreVideo" -framework "Foundation" -framework "GLKit" -framework "MobileCoreServices" -framework "OpenGLES" -framework "Photos" -framework "QuartzCore" -framework "Security" -framework "UIKit"
+OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
+PODS_ROOT = ${SRCROOT}/Pods

@@ -1,0 +1,52 @@
+{
+  "name": "WebRTC",
+  "version": "0.0.1",
+  "summary": "WebRTC static libraries and objc headers.",
+  "description": "                   A longer description of WebRTC in Markdown format.\n                   Bulding WebRTC for iOS and adding it to an xcode project is no fun.\n                   Just add this cocoa pod to your Podfile and be happy. :)\n",
+  "homepage": "https://www.ahoyconference.com",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Klaus-Peter Junghanns": "kapejod@gmail.com"
+  },
+  "social_media_url": "http://twitter.com/kapejod",
+  "platforms": {
+    "ios": null
+  },
+  "source": {
+    "git": "https://github.com/kapejod/webrtc-ios.git",
+    "tag": "v0.0.1"
+  },
+  "source_files": "include/*.h",
+  "public_header_files": "include/*.h",
+  "preserve_paths": "lib/libWebRTC.a",
+  "vendored_libraries": "lib/libWebRTC.a",
+  "frameworks": [
+    "QuartzCore",
+    "OpenGLES",
+    "AudioToolbox",
+    "AVFoundation",
+    "CoreVideo",
+    "Foundation",
+    "UIKit",
+    "CoreGraphics",
+    "Security",
+    "AssetsLibrary",
+    "MobileCoreServices",
+    "CoreLocation",
+    "CoreMedia",
+    "GLKit"
+  ],
+  "libraries": [
+    "sqlite3",
+    "stdc++",
+    "System",
+    "util"
+  ],
+  "xcconfig": {
+    "HEADER_SEARCH_PATHS": "${PODS_ROOT}/WebRTC/include/**"
+  },
+  "prepare_command": "\t\t    gzip -d ./lib/*.gz\n"
+}

@@ -1,0 +1,33 @@
+PODS:
+  - CocoaLumberjack (2.0.0):
+    - CocoaLumberjack/Default (= 2.0.0)
+    - CocoaLumberjack/Extensions (= 2.0.0)
+  - CocoaLumberjack/Core (2.0.0)
+  - CocoaLumberjack/Default (2.0.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.0.0):
+    - CocoaLumberjack/Default
+  - PubNub (4.0.7):
+    - CocoaLumberjack (= 2.0.0)
+    - PubNub/Core (= 4.0.7)
+  - PubNub/Core (4.0.7):
+    - CocoaLumberjack (= 2.0.0)
+  - QBImagePickerController (3.2.0)
+  - WebRTC (0.0.1)
+
+DEPENDENCIES:
+  - PubNub (~> 4.0)
+  - QBImagePickerController
+  - WebRTC (from `/Users/lucan/projects/jyw/webrtc-ios`)
+
+EXTERNAL SOURCES:
+  WebRTC:
+    :path: /Users/lucan/projects/jyw/webrtc-ios
+
+SPEC CHECKSUMS:
+  CocoaLumberjack: a6f77d987d65dc7ba86b0f84db7d0b9084f77bcb
+  PubNub: cc6b1aaa5010bc63232c30b724111a0c4de61fd1
+  QBImagePickerController: 75b3857b1307a3c01ce486559bc294f802ddec6c
+  WebRTC: 3ff1063dd498f510c186a3a7e1d585b2976e818e
+
+COCOAPODS: 0.37.2

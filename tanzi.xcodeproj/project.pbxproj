@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07BF568F80DCF123CE09FFBE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4FD8C5FCF01EDE4931D759 /* libPods.a */; };
 		517EDA811BC7B6D700273C27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDA801BC7B6D700273C27 /* main.m */; };
 		517EDA841BC7B6D700273C27 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDA831BC7B6D700273C27 /* AppDelegate.m */; };
 		517EDA871BC7B6D700273C27 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDA861BC7B6D700273C27 /* ViewController.m */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C4FD8C5FCF01EDE4931D759 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		517EDA7C1BC7B6D700273C27 /* tanzi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tanzi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		517EDA801BC7B6D700273C27 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		517EDA821BC7B6D700273C27 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +53,8 @@
 		517EDAA01BC7B6D700273C27 /* tanziUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tanziUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		517EDAA41BC7B6D700273C27 /* tanziUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tanziUITests.m; sourceTree = "<group>"; };
 		517EDAA61BC7B6D700273C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A90D8FEC08CFEAEE7BECDF7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B8F3AFEC7D9321221009EDB0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07BF568F80DCF123CE09FFBE /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +90,8 @@
 				517EDA981BC7B6D700273C27 /* tanziTests */,
 				517EDAA31BC7B6D700273C27 /* tanziUITests */,
 				517EDA7D1BC7B6D700273C27 /* Products */,
+				D8D2222394393FCDB355542B /* Pods */,
+				CE219FCA8237721903F5657F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +147,23 @@
 			path = tanziUITests;
 			sourceTree = "<group>";
 		};
+		CE219FCA8237721903F5657F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C4FD8C5FCF01EDE4931D759 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D8D2222394393FCDB355542B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B8F3AFEC7D9321221009EDB0 /* Pods.debug.xcconfig */,
+				9A90D8FEC08CFEAEE7BECDF7 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +171,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 517EDAA91BC7B6D700273C27 /* Build configuration list for PBXNativeTarget "tanzi" */;
 			buildPhases = (
+				6F1D37F1AB24CB2D612EEEE4 /* Check Pods Manifest.lock */,
 				517EDA781BC7B6D700273C27 /* Sources */,
 				517EDA791BC7B6D700273C27 /* Frameworks */,
 				517EDA7A1BC7B6D700273C27 /* Resources */,
+				6CCC81624548C8A4359D0301 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,6 +290,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6CCC81624548C8A4359D0301 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F1D37F1AB24CB2D612EEEE4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		517EDA781BC7B6D700273C27 /* Sources */ = {
@@ -409,6 +468,7 @@
 		};
 		517EDAAA1BC7B6D700273C27 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F3AFEC7D9321221009EDB0 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = tanzi/Info.plist;
@@ -420,6 +480,7 @@
 		};
 		517EDAAB1BC7B6D700273C27 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A90D8FEC08CFEAEE7BECDF7 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = tanzi/Info.plist;
@@ -496,6 +557,7 @@
 				517EDAAB1BC7B6D700273C27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		517EDAAC1BC7B6D700273C27 /* Build configuration list for PBXNativeTarget "tanziTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +566,7 @@
 				517EDAAE1BC7B6D700273C27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		517EDAAF1BC7B6D700273C27 /* Build configuration list for PBXNativeTarget "tanziUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +575,7 @@
 				517EDAB11BC7B6D700273C27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
