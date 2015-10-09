@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D4E2410CA4247D3621B66EB2F69B29DA3F9699B1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "D4E2410CA4247D3621B66EB2F69B29DA3F9699B1" : 0,
+    "7EF7857A1738879C892B3B4A42E4DFB8FC2CB6E3" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2701F532-0A42-4AB7-8061-252393120EC2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "D4E2410CA4247D3621B66EB2F69B29DA3F9699B1" : "tanzi\/",
+    "7EF7857A1738879C892B3B4A42E4DFB8FC2CB6E3" : "webrtc-ios\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "tanzi",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "tanzi.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:kapejod\/webrtc-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7EF7857A1738879C892B3B4A42E4DFB8FC2CB6E3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:chenlucan\/tanzi.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D4E2410CA4247D3621B66EB2F69B29DA3F9699B1"
+    }
+  ]
+}
