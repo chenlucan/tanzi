@@ -1,0 +1,519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		517EDA811BC7B6D700273C27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDA801BC7B6D700273C27 /* main.m */; };
+		517EDA841BC7B6D700273C27 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDA831BC7B6D700273C27 /* AppDelegate.m */; };
+		517EDA871BC7B6D700273C27 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDA861BC7B6D700273C27 /* ViewController.m */; };
+		517EDA8A1BC7B6D700273C27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 517EDA881BC7B6D700273C27 /* Main.storyboard */; };
+		517EDA8C1BC7B6D700273C27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 517EDA8B1BC7B6D700273C27 /* Assets.xcassets */; };
+		517EDA8F1BC7B6D700273C27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 517EDA8D1BC7B6D700273C27 /* LaunchScreen.storyboard */; };
+		517EDA9A1BC7B6D700273C27 /* tanziTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDA991BC7B6D700273C27 /* tanziTests.m */; };
+		517EDAA51BC7B6D700273C27 /* tanziUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDAA41BC7B6D700273C27 /* tanziUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		517EDA961BC7B6D700273C27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 517EDA741BC7B6D700273C27 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 517EDA7B1BC7B6D700273C27;
+			remoteInfo = tanzi;
+		};
+		517EDAA11BC7B6D700273C27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 517EDA741BC7B6D700273C27 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 517EDA7B1BC7B6D700273C27;
+			remoteInfo = tanzi;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		517EDA7C1BC7B6D700273C27 /* tanzi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tanzi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		517EDA801BC7B6D700273C27 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		517EDA821BC7B6D700273C27 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		517EDA831BC7B6D700273C27 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		517EDA851BC7B6D700273C27 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		517EDA861BC7B6D700273C27 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		517EDA891BC7B6D700273C27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		517EDA8B1BC7B6D700273C27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		517EDA8E1BC7B6D700273C27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		517EDA901BC7B6D700273C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		517EDA951BC7B6D700273C27 /* tanziTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tanziTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		517EDA991BC7B6D700273C27 /* tanziTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tanziTests.m; sourceTree = "<group>"; };
+		517EDA9B1BC7B6D700273C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		517EDAA01BC7B6D700273C27 /* tanziUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tanziUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		517EDAA41BC7B6D700273C27 /* tanziUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tanziUITests.m; sourceTree = "<group>"; };
+		517EDAA61BC7B6D700273C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		517EDA791BC7B6D700273C27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		517EDA921BC7B6D700273C27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		517EDA9D1BC7B6D700273C27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		517EDA731BC7B6D700273C27 = {
+			isa = PBXGroup;
+			children = (
+				517EDA7E1BC7B6D700273C27 /* tanzi */,
+				517EDA981BC7B6D700273C27 /* tanziTests */,
+				517EDAA31BC7B6D700273C27 /* tanziUITests */,
+				517EDA7D1BC7B6D700273C27 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		517EDA7D1BC7B6D700273C27 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				517EDA7C1BC7B6D700273C27 /* tanzi.app */,
+				517EDA951BC7B6D700273C27 /* tanziTests.xctest */,
+				517EDAA01BC7B6D700273C27 /* tanziUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		517EDA7E1BC7B6D700273C27 /* tanzi */ = {
+			isa = PBXGroup;
+			children = (
+				517EDA821BC7B6D700273C27 /* AppDelegate.h */,
+				517EDA831BC7B6D700273C27 /* AppDelegate.m */,
+				517EDA851BC7B6D700273C27 /* ViewController.h */,
+				517EDA861BC7B6D700273C27 /* ViewController.m */,
+				517EDA881BC7B6D700273C27 /* Main.storyboard */,
+				517EDA8B1BC7B6D700273C27 /* Assets.xcassets */,
+				517EDA8D1BC7B6D700273C27 /* LaunchScreen.storyboard */,
+				517EDA901BC7B6D700273C27 /* Info.plist */,
+				517EDA7F1BC7B6D700273C27 /* Supporting Files */,
+			);
+			path = tanzi;
+			sourceTree = "<group>";
+		};
+		517EDA7F1BC7B6D700273C27 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				517EDA801BC7B6D700273C27 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		517EDA981BC7B6D700273C27 /* tanziTests */ = {
+			isa = PBXGroup;
+			children = (
+				517EDA991BC7B6D700273C27 /* tanziTests.m */,
+				517EDA9B1BC7B6D700273C27 /* Info.plist */,
+			);
+			path = tanziTests;
+			sourceTree = "<group>";
+		};
+		517EDAA31BC7B6D700273C27 /* tanziUITests */ = {
+			isa = PBXGroup;
+			children = (
+				517EDAA41BC7B6D700273C27 /* tanziUITests.m */,
+				517EDAA61BC7B6D700273C27 /* Info.plist */,
+			);
+			path = tanziUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		517EDA7B1BC7B6D700273C27 /* tanzi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 517EDAA91BC7B6D700273C27 /* Build configuration list for PBXNativeTarget "tanzi" */;
+			buildPhases = (
+				517EDA781BC7B6D700273C27 /* Sources */,
+				517EDA791BC7B6D700273C27 /* Frameworks */,
+				517EDA7A1BC7B6D700273C27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tanzi;
+			productName = tanzi;
+			productReference = 517EDA7C1BC7B6D700273C27 /* tanzi.app */;
+			productType = "com.apple.product-type.application";
+		};
+		517EDA941BC7B6D700273C27 /* tanziTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 517EDAAC1BC7B6D700273C27 /* Build configuration list for PBXNativeTarget "tanziTests" */;
+			buildPhases = (
+				517EDA911BC7B6D700273C27 /* Sources */,
+				517EDA921BC7B6D700273C27 /* Frameworks */,
+				517EDA931BC7B6D700273C27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				517EDA971BC7B6D700273C27 /* PBXTargetDependency */,
+			);
+			name = tanziTests;
+			productName = tanziTests;
+			productReference = 517EDA951BC7B6D700273C27 /* tanziTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		517EDA9F1BC7B6D700273C27 /* tanziUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 517EDAAF1BC7B6D700273C27 /* Build configuration list for PBXNativeTarget "tanziUITests" */;
+			buildPhases = (
+				517EDA9C1BC7B6D700273C27 /* Sources */,
+				517EDA9D1BC7B6D700273C27 /* Frameworks */,
+				517EDA9E1BC7B6D700273C27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				517EDAA21BC7B6D700273C27 /* PBXTargetDependency */,
+			);
+			name = tanziUITests;
+			productName = tanziUITests;
+			productReference = 517EDAA01BC7B6D700273C27 /* tanziUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		517EDA741BC7B6D700273C27 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = Dynasty;
+				TargetAttributes = {
+					517EDA7B1BC7B6D700273C27 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					517EDA941BC7B6D700273C27 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 517EDA7B1BC7B6D700273C27;
+					};
+					517EDA9F1BC7B6D700273C27 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 517EDA7B1BC7B6D700273C27;
+					};
+				};
+			};
+			buildConfigurationList = 517EDA771BC7B6D700273C27 /* Build configuration list for PBXProject "tanzi" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 517EDA731BC7B6D700273C27;
+			productRefGroup = 517EDA7D1BC7B6D700273C27 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				517EDA7B1BC7B6D700273C27 /* tanzi */,
+				517EDA941BC7B6D700273C27 /* tanziTests */,
+				517EDA9F1BC7B6D700273C27 /* tanziUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		517EDA7A1BC7B6D700273C27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				517EDA8F1BC7B6D700273C27 /* LaunchScreen.storyboard in Resources */,
+				517EDA8C1BC7B6D700273C27 /* Assets.xcassets in Resources */,
+				517EDA8A1BC7B6D700273C27 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		517EDA931BC7B6D700273C27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		517EDA9E1BC7B6D700273C27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		517EDA781BC7B6D700273C27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				517EDA871BC7B6D700273C27 /* ViewController.m in Sources */,
+				517EDA841BC7B6D700273C27 /* AppDelegate.m in Sources */,
+				517EDA811BC7B6D700273C27 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		517EDA911BC7B6D700273C27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				517EDA9A1BC7B6D700273C27 /* tanziTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		517EDA9C1BC7B6D700273C27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				517EDAA51BC7B6D700273C27 /* tanziUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		517EDA971BC7B6D700273C27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 517EDA7B1BC7B6D700273C27 /* tanzi */;
+			targetProxy = 517EDA961BC7B6D700273C27 /* PBXContainerItemProxy */;
+		};
+		517EDAA21BC7B6D700273C27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 517EDA7B1BC7B6D700273C27 /* tanzi */;
+			targetProxy = 517EDAA11BC7B6D700273C27 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		517EDA881BC7B6D700273C27 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				517EDA891BC7B6D700273C27 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		517EDA8D1BC7B6D700273C27 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				517EDA8E1BC7B6D700273C27 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		517EDAA71BC7B6D700273C27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		517EDAA81BC7B6D700273C27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		517EDAAA1BC7B6D700273C27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = tanzi/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lucanchen.tanzi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		517EDAAB1BC7B6D700273C27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = tanzi/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lucanchen.tanzi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		517EDAAD1BC7B6D700273C27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = tanziTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lucanchen.tanziTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tanzi.app/tanzi";
+			};
+			name = Debug;
+		};
+		517EDAAE1BC7B6D700273C27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = tanziTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lucanchen.tanziTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tanzi.app/tanzi";
+			};
+			name = Release;
+		};
+		517EDAB01BC7B6D700273C27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = tanziUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lucanchen.tanziUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = tanzi;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		517EDAB11BC7B6D700273C27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = tanziUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lucanchen.tanziUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = tanzi;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		517EDA771BC7B6D700273C27 /* Build configuration list for PBXProject "tanzi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				517EDAA71BC7B6D700273C27 /* Debug */,
+				517EDAA81BC7B6D700273C27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		517EDAA91BC7B6D700273C27 /* Build configuration list for PBXNativeTarget "tanzi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				517EDAAA1BC7B6D700273C27 /* Debug */,
+				517EDAAB1BC7B6D700273C27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		517EDAAC1BC7B6D700273C27 /* Build configuration list for PBXNativeTarget "tanziTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				517EDAAD1BC7B6D700273C27 /* Debug */,
+				517EDAAE1BC7B6D700273C27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		517EDAAF1BC7B6D700273C27 /* Build configuration list for PBXNativeTarget "tanziUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				517EDAB01BC7B6D700273C27 /* Debug */,
+				517EDAB11BC7B6D700273C27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 517EDA741BC7B6D700273C27 /* Project object */;
+}
