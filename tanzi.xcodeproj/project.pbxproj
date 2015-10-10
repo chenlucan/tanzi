@@ -12,9 +12,12 @@
 		517EDA841BC7B6D700273C27 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDA831BC7B6D700273C27 /* AppDelegate.m */; };
 		517EDA871BC7B6D700273C27 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDA861BC7B6D700273C27 /* ViewController.m */; };
 		517EDA8C1BC7B6D700273C27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 517EDA8B1BC7B6D700273C27 /* Assets.xcassets */; };
-		517EDA8F1BC7B6D700273C27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 517EDA8D1BC7B6D700273C27 /* LaunchScreen.storyboard */; };
+		517EDA8F1BC7B6D700273C27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 517EDA8D1BC7B6D700273C27 /* Main.storyboard */; };
 		517EDA9A1BC7B6D700273C27 /* tanziTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDA991BC7B6D700273C27 /* tanziTests.m */; };
 		517EDAA51BC7B6D700273C27 /* tanziUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDAA41BC7B6D700273C27 /* tanziUITests.m */; };
+		51D3EC3F1BC80509005BE683 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D3EC3C1BC80509005BE683 /* SecondViewController.m */; settings = {ASSET_TAGS = (); }; };
+		51D3EC401BC80509005BE683 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D3EC3E1BC80509005BE683 /* FirstViewController.m */; settings = {ASSET_TAGS = (); }; };
+		51FCA2E41BC7FDC40080C22A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51FCA2E31BC7FDC40080C22A /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +46,7 @@
 		517EDA851BC7B6D700273C27 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		517EDA861BC7B6D700273C27 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		517EDA8B1BC7B6D700273C27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		517EDA8E1BC7B6D700273C27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		517EDA8E1BC7B6D700273C27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		517EDA901BC7B6D700273C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		517EDA951BC7B6D700273C27 /* tanziTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tanziTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		517EDA991BC7B6D700273C27 /* tanziTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tanziTests.m; sourceTree = "<group>"; };
@@ -51,6 +54,11 @@
 		517EDAA01BC7B6D700273C27 /* tanziUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tanziUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		517EDAA41BC7B6D700273C27 /* tanziUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tanziUITests.m; sourceTree = "<group>"; };
 		517EDAA61BC7B6D700273C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51D3EC3B1BC80509005BE683 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		51D3EC3C1BC80509005BE683 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		51D3EC3D1BC80509005BE683 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		51D3EC3E1BC80509005BE683 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		51FCA2E31BC7FDC40080C22A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A90D8FEC08CFEAEE7BECDF7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B8F3AFEC7D9321221009EDB0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,11 +115,16 @@
 			isa = PBXGroup;
 			children = (
 				517EDA821BC7B6D700273C27 /* AppDelegate.h */,
+				51FCA2E31BC7FDC40080C22A /* LaunchScreen.storyboard */,
+				51D3EC3B1BC80509005BE683 /* SecondViewController.h */,
+				51D3EC3C1BC80509005BE683 /* SecondViewController.m */,
+				51D3EC3D1BC80509005BE683 /* FirstViewController.h */,
+				51D3EC3E1BC80509005BE683 /* FirstViewController.m */,
 				517EDA831BC7B6D700273C27 /* AppDelegate.m */,
 				517EDA851BC7B6D700273C27 /* ViewController.h */,
 				517EDA861BC7B6D700273C27 /* ViewController.m */,
 				517EDA8B1BC7B6D700273C27 /* Assets.xcassets */,
-				517EDA8D1BC7B6D700273C27 /* LaunchScreen.storyboard */,
+				517EDA8D1BC7B6D700273C27 /* Main.storyboard */,
 				517EDA901BC7B6D700273C27 /* Info.plist */,
 				517EDA7F1BC7B6D700273C27 /* Supporting Files */,
 			);
@@ -266,7 +279,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				517EDA8F1BC7B6D700273C27 /* LaunchScreen.storyboard in Resources */,
+				51FCA2E41BC7FDC40080C22A /* LaunchScreen.storyboard in Resources */,
+				517EDA8F1BC7B6D700273C27 /* Main.storyboard in Resources */,
 				517EDA8C1BC7B6D700273C27 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,7 +339,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51D3EC3F1BC80509005BE683 /* SecondViewController.m in Sources */,
 				517EDA871BC7B6D700273C27 /* ViewController.m in Sources */,
+				51D3EC401BC80509005BE683 /* FirstViewController.m in Sources */,
 				517EDA841BC7B6D700273C27 /* AppDelegate.m in Sources */,
 				517EDA811BC7B6D700273C27 /* main.m in Sources */,
 			);
@@ -363,12 +379,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		517EDA8D1BC7B6D700273C27 /* LaunchScreen.storyboard */ = {
+		517EDA8D1BC7B6D700273C27 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				517EDA8E1BC7B6D700273C27 /* Base */,
 			);
-			name = LaunchScreen.storyboard;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -459,6 +475,7 @@
 			baseConfigurationReference = B8F3AFEC7D9321221009EDB0 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = tanzi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lucanchen.tanzi;
@@ -471,6 +488,7 @@
 			baseConfigurationReference = 9A90D8FEC08CFEAEE7BECDF7 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = tanzi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lucanchen.tanzi;
