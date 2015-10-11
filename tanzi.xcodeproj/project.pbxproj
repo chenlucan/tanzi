@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		07BF568F80DCF123CE09FFBE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4FD8C5FCF01EDE4931D759 /* libPods.a */; };
 		5145C5081BC9DAD2008C2638 /* AuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5145C5071BC9DAD2008C2638 /* AuthManager.m */; settings = {ASSET_TAGS = (); }; };
+		5145C50B1BC9E81C008C2638 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5145C50A1BC9E81C008C2638 /* KeychainItemWrapper.m */; settings = {ASSET_TAGS = (); }; };
 		517EDA811BC7B6D700273C27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDA801BC7B6D700273C27 /* main.m */; };
 		517EDA841BC7B6D700273C27 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDA831BC7B6D700273C27 /* AppDelegate.m */; };
 		517EDA871BC7B6D700273C27 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDA861BC7B6D700273C27 /* ViewController.m */; };
@@ -42,6 +43,8 @@
 		0C4FD8C5FCF01EDE4931D759 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5145C5061BC9DAD2008C2638 /* AuthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthManager.h; sourceTree = "<group>"; };
 		5145C5071BC9DAD2008C2638 /* AuthManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthManager.m; sourceTree = "<group>"; };
+		5145C5091BC9E81C008C2638 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		5145C50A1BC9E81C008C2638 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		517EDA7C1BC7B6D700273C27 /* tanzi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tanzi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		517EDA801BC7B6D700273C27 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		517EDA821BC7B6D700273C27 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 				51D3EC3B1BC80509005BE683 /* SecondViewController.h */,
 				51D3EC3C1BC80509005BE683 /* SecondViewController.m */,
 				51D3EC3D1BC80509005BE683 /* FirstViewController.h */,
+				5145C5091BC9E81C008C2638 /* KeychainItemWrapper.h */,
+				5145C50A1BC9E81C008C2638 /* KeychainItemWrapper.m */,
 				51D3EC3E1BC80509005BE683 /* FirstViewController.m */,
 				517EDA831BC7B6D700273C27 /* AppDelegate.m */,
 				517EDA851BC7B6D700273C27 /* ViewController.h */,
@@ -350,6 +355,7 @@
 				51D3EC401BC80509005BE683 /* FirstViewController.m in Sources */,
 				517EDA841BC7B6D700273C27 /* AppDelegate.m in Sources */,
 				517EDA811BC7B6D700273C27 /* main.m in Sources */,
+				5145C50B1BC9E81C008C2638 /* KeychainItemWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,7 +3,7 @@
 
 @interface FirstViewController : UIViewController
 
-- (void) initWithId:(NSString *)uid;
+- (void)setUserId:(NSString *)uid;
 - (void)applicationWillResignActive:(UIApplication *)application;
 
 @end

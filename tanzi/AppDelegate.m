@@ -8,16 +8,25 @@
 
 #import "AppDelegate.h"
 #import "AuthManager.h"
+#import "KeychainItemWrapper.h"
+#import "FirstViewController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <AuthManagerDelegate>
 
 @end
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[AuthManager getInstance] isAuthenticated];
+    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"tanziId" accessGroup:nil];
+    [keychainItem setObject:@"lucan" forKey:kSecValueData];
+    [keychainItem setObject:@"lucan" forKey:kSecAttrAccount];
+    
+    NSString *password = [keychainItem objectForKey:kSecValueData];
+    NSString *username = [keychainItem objectForKey:kSecAttrAccount];
+    
+    [AuthManager getInstance].delegate = self;
+    [[AuthManager getInstance] AuthenticateUser:username WithPassword:password];
     
     return YES;
 }
@@ -42,6 +51,25 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - AuthManagerDelegate
+- (void)authenticatedUserId:(NSString *)userid WithUsername:(NSString *)username {
+    if ([userid length] != 0) {
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            // successful authenticated username:
+            //  - userid is from auth server
+            NSLog(@"user[%@] is authenticated successfully", userid);
+            UITabBarController* tbc = self.window.rootViewController;
+            for (UIViewController *v in tbc.viewControllers)
+            {
+                if ([v isKindOfClass:[FirstViewController class]]) {
+                    FirstViewController* fv = (FirstViewController *)v;
+                    [fv setUserId:userid];
+                }
+            }
+        });
+    }
 }
 
 @end

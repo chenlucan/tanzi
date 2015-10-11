@@ -18,12 +18,13 @@
 
 @interface FirstViewController () <RTCPeerConnectionDelegate, RTCSessionDescriptionDelegate, PNObjectEventListener, RTCDataChannelDelegate, UINavigationControllerDelegate, QBImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btnConnect;
+@property (weak, nonatomic) IBOutlet UILabel *labelStatus;
 @property (weak, nonatomic) IBOutlet UITextField *txtFieldEmail;
 @property (weak, nonatomic) IBOutlet UIButton *btnUpload;
 
-@property(nonatomic, strong) NSString *userID;
-@property(nonatomic, strong) NSString *email;
-@property(nonatomic, strong) NSString *other_userID;
+@property(nonatomic, strong) NSString *roleId_;
+@property(nonatomic, strong) NSString *userId_;
+@property(nonatomic, strong) NSString *peerRoleId_;
 @property(nonatomic, strong) NSMutableArray *messageQueue;
 @property(nonatomic) BOOL offer_answer_done;
 @property(nonatomic, strong) RTCPeerConnection *peerConnection;
@@ -42,35 +43,39 @@
 @implementation FirstViewController {
 }
 
+-(void)setUserId:(NSString *)uid {
+    self.userId_ = uid;
+    [self initAndConnect];
+}
+
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];
-    [self initWithId:@"lucan"];
     return self;
 }
 
-- (void) initWithId:(NSString *)uid {
-    if (self.peerConnection) {
-        NSLog(@"already have RTCPeerConnection, return");
-        return;
-    }
+- (void) initAndConnect {
+    // Explanation: uid is for account from authentication
+    // it could have multi connections under the same id
+    // connection id should be different from userid
+    // however, since we only have one connection, no connection is used right now
+    
+    // todo:
+    //  - allow multi connections, diff by conneciton id
+    //  - userid has the same lifetime of authentication token, not netowrk status
+    //  - network status will affect candidates. Should be handled by webrtc candidate managers
+    //  - decouple userid, newconnection, newchannel
     NSMutableString *offerer  = [NSMutableString stringWithString:@"com.lucanchen.offerer"];
     NSMutableString *answerer = [NSMutableString stringWithString:@"com.lucanchen.answerer"];
-
-    // todo: rename to role
-    self.userID       = offerer;
-    self.other_userID = answerer;
-    // todo: rename to id
-    self.email        = @"lucan"; // hardcode for prototype
+    
+    self.roleId_      = offerer;
+    self.peerRoleId_  = answerer;
     self.messageQueue = [[NSMutableArray alloc] init];
     self.offer_answer_done = NO;
     self.dataChannel = nil;
     
-    NSLog(@"Client started as role:%@, id:%@", self.userID, self.email);
-}
-
--(void)viewDidAppear:(BOOL)animated {
-}
--(void)viewDidLoad {
+    [self connectPeer];
+    
+    NSLog(@"Client started as roleId:%@, userId:%@", self.roleId_, self.userId_);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -78,7 +83,8 @@
   [self dismissViewControllerAnimated:NO completion:nil];
 }
 - (IBAction)onConnect:(id)sender {
-    if ([self.email length] != 0) {
+    NSLog(@"On connect, id:%@", self.userId_);
+    if ([self.userId_ length] != 0) {
         [self connectPeer];
     }
 }
@@ -203,9 +209,8 @@
 // New Ice candidate have been found.
 - (void)peerConnection:(RTCPeerConnection *)peerConnection
        gotICECandidate:(RTCICECandidate *)candidate {
-
     NSDictionary* dataDict = @{
-        @"userID" : self.userID,
+        @"userID" : self.roleId_,
         @"candidate": @{
             @"sdpMLineIndex" : [NSNumber numberWithInteger:candidate.sdpMLineIndex],
             @"sdpMid"        : candidate.sdpMid,
@@ -221,7 +226,7 @@
             [self.messageQueue addObject:dataDict];
         });
     } else {
-        [self.client publish:dataDict toChannel:self.email withCompletion:^(PNPublishStatus *status) {
+        [self.client publish:dataDict toChannel:self.userId_ withCompletion:^(PNPublishStatus *status) {
             [self processPublishStatus:status];
         }];
     }
@@ -239,48 +244,17 @@
 - (void)peerConnection:(RTCPeerConnection *)peerConnection didCreateSessionDescription:(RTCSessionDescription *)sdp error:(NSError *)error {
     [peerConnection setLocalDescriptionWithDelegate:self sessionDescription:sdp];
 
-    NSDictionary *json = @{@"type" : sdp.type,
+    NSDictionary *json = @{
+                           @"type" : sdp.type,
                            @"sdp"  : sdp.description
-                           };
-    NSDictionary *dataDict = @{@"userID":self.userID,
-                                @"fullPart":json
-                                };
-    [self.client publish:dataDict toChannel:self.email withCompletion:^(PNPublishStatus *status) {
+                         };
+    NSDictionary *dataDict = @{
+                               @"userID":self.roleId_,
+                               @"fullPart":json
+                             };
+    [self.client publish:dataDict toChannel:self.userId_ withCompletion:^(PNPublishStatus *status) {
         [self processPublishStatus:status];
     }];
-//    NSLog(@"==============================900 >>>> description, length %ld", sdp.description.length);
-//    NSString* sdpPart1 = [sdp.description substringWithRange:NSMakeRange(0, 900)];
-//    NSString* sdpPart2 = [sdp.description substringWithRange:NSMakeRange(900, sdp.description.length-900)];
-//
-//    NSDictionary *dataDict1 = @{
-//        @"userID":self.userID,
-//        @"firstPart":sdpPart1
-//    };
-//    NSDictionary *dataDict2 = @{
-//        @"userID":self.userID,
-//        @"secondPart":sdpPart2
-//    };
-    
-//    NSData *data1 = [NSJSONSerialization dataWithJSONObject:dataDict1
-//        options:NSJSONWritingPrettyPrinted
-//        error:nil];
-//    
-//    NSData *data2 = [NSJSONSerialization dataWithJSONObject:dataDict2
-//        options:NSJSONWritingPrettyPrinted
-//        error:nil];
-//
-//    NSString *dataStr1 = [[NSString alloc]initWithData:data1
-//                                              encoding: NSUTF8StringEncoding];
-//    
-//    NSString *dataStr2 = [[NSString alloc]initWithData:data2
-//                                              encoding: NSUTF8StringEncoding];
-//    [self.client publish:dataDict1 toChannel:self.email withCompletion:^(PNPublishStatus *status) {
-//        
-//    }];
-//    [self.client publish:dataDict2 toChannel:self.email withCompletion:^(PNPublishStatus *status) {
-//        
-//    }];
-//    NSLog(@"==========sending two parts offer");
 }
 
 // Called when setting a local or remote description.
@@ -307,7 +281,7 @@ didSetSessionDescriptionWithError:(NSError *)error {
         return;
     }
     NSString *userID = msg[@"userID"];
-    if (![userID  isEqual: self.other_userID]) {
+    if (![userID  isEqual: self.peerRoleId_]) {
         NSLog(@"Ignoring this message, due to wrong userID: %@", userID);
         return;
     }
@@ -346,7 +320,7 @@ didSetSessionDescriptionWithError:(NSError *)error {
         
         for (NSDictionary *dataDict in self.messageQueue) {
             NSLog(@"Sending each icecandidate");
-            [self.client publish:dataDict toChannel:self.email withCompletion:^(PNPublishStatus *status) {
+            [self.client publish:dataDict toChannel:self.userId_ withCompletion:^(PNPublishStatus *status) {
                 [self processPublishStatus:status];
             }];
         }
@@ -463,6 +437,10 @@ didSetSessionDescriptionWithError:(NSError *)error {
             self.channelOpened = YES;
             self.btnUpload.enabled = YES;
             [self.btnUpload setTitle:@"Upload" forState:UIControlStateNormal];
+            self.labelStatus.alpha = 0.5;
+            self.labelStatus.textColor = [UIColor greenColor];
+            self.labelStatus.text = @"Connected";
+            [self.view setNeedsDisplay];
             break;
         case kRTCDataChannelStateClosing:
             NSLog(@"channelDidChangeState closing");
@@ -670,8 +648,8 @@ didReceiveMessageWithBuffer:(RTCDataBuffer*)buffer{
 }
 
 -(void) connectPeer {
-    if ([self.email length] == 0) {
-        NSLog(@"Email address is empty. Could not connect to peer.");
+    if ([self.userId_ length] == 0) {
+        NSLog(@"Could not connect to peer with empty user id.");
         return;
     }
     if (self.peerConnection) {
@@ -685,7 +663,7 @@ didReceiveMessageWithBuffer:(RTCDataBuffer*)buffer{
                                                                      subscribeKey:@"sub-c-3af2bc02-2b93-11e5-9bdb-0619f8945a4f"];
     self.client = [PubNub clientWithConfiguration:configuration];
     [self.client addListener:self];
-    [self.client subscribeToChannels:@[self.email] withPresence:YES];
+    [self.client subscribeToChannels:@[self.userId_] withPresence:YES];
     
     self.channelOpened = NO;
     

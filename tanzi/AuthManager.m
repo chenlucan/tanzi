@@ -42,6 +42,8 @@ static AuthManager *instance;
     // authenticate & authorise user with server
     // get UserId
     // notify client auth results
+    self.UserId_ = username;
+    [self.delegate authenticatedUserId:self.UserId WithUsername:self.UserId];
 }
 
 @end

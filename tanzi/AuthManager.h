@@ -8,7 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol AuthManagerDelegate <NSObject>
+- (void)authenticatedUserId:(NSString *)userid WithUsername:(NSString *)username;
+@end
+
+
 @interface AuthManager : NSObject
+
+@property (nonatomic, weak) id <AuthManagerDelegate> delegate;
 
 +(AuthManager*)getInstance;
 
