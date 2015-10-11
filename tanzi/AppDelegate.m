@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "AuthManager.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [[AuthManager getInstance] isAuthenticated];
+    
     return YES;
 }
 
