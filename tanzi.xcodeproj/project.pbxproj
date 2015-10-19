@@ -121,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				517EDA821BC7B6D700273C27 /* AppDelegate.h */,
+				517EDA831BC7B6D700273C27 /* AppDelegate.m */,
 				51FCA2E31BC7FDC40080C22A /* LaunchScreen.storyboard */,
 				51D3EC3B1BC80509005BE683 /* SecondViewController.h */,
 				51D3EC3C1BC80509005BE683 /* SecondViewController.m */,
@@ -128,7 +129,6 @@
 				5145C5091BC9E81C008C2638 /* KeychainItemWrapper.h */,
 				5145C50A1BC9E81C008C2638 /* KeychainItemWrapper.m */,
 				51D3EC3E1BC80509005BE683 /* FirstViewController.m */,
-				517EDA831BC7B6D700273C27 /* AppDelegate.m */,
 				517EDA851BC7B6D700273C27 /* ViewController.h */,
 				517EDA861BC7B6D700273C27 /* ViewController.m */,
 				517EDA8B1BC7B6D700273C27 /* Assets.xcassets */,
