@@ -11,6 +11,8 @@
 #import "KeychainItemWrapper.h"
 #import "FirstViewController.h"
 
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
 @interface AppDelegate () <AuthManagerDelegate>
 
 @end
@@ -18,6 +20,9 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
+    
     KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"tanziId" accessGroup:nil];
     [keychainItem setObject:@"lucan" forKey:kSecValueData];
     [keychainItem setObject:@"lucan" forKey:kSecAttrAccount];
@@ -51,6 +56,14 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation
+            ];
 }
 
 #pragma mark - AuthManagerDelegate
