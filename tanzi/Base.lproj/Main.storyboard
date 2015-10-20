@@ -108,6 +108,9 @@
                                 <rect key="frame" x="0.0" y="393" width="600" height="30"/>
                                 <animations/>
                                 <state key="normal" title="     Sign Out"/>
+                                <connections>
+                                    <action selector="onLogout:" destination="V6O-Pd-eQ1" eventType="touchUpInside" id="CQ5-fb-XSf"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPZ-Yf-2h5">
                                 <rect key="frame" x="0.0" y="325" width="600" height="39"/>
