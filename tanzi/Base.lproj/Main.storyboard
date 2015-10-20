@@ -79,6 +79,18 @@
                     <view key="view" contentMode="scaleToFill" id="L0m-Og-SAw">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4f-sO-E4P">
+                                <rect key="frame" x="109" y="444" width="383" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onLogout:" destination="V6O-Pd-eQ1" eventType="touchUpInside" id="Gai-ad-F6U"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -86,7 +98,36 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S9h-HY-JgO" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="400" y="340.80000000000001"/>
+            <point key="canvasLocation" x="400" y="340"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="Vvf-wV-KMU">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="POP-Lh-Yo8" customClass="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tc5-Ah-fXh"/>
+                        <viewControllerLayoutGuide type="bottom" id="3M2-dC-Z7w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4Gj-F6-P9O">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkY-ia-5FC">
+                                <rect key="frame" x="124" y="193" width="352" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Login With Facebook"/>
+                                <connections>
+                                    <action selector="onFBLogin:" destination="POP-Lh-Yo8" eventType="touchUpInside" id="CpW-kX-Vjo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dtF-IG-s6b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1220" y="-896"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="knM-NL-nmK">

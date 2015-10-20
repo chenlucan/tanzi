@@ -19,6 +19,7 @@
 		517EDAA51BC7B6D700273C27 /* tanziUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDAA41BC7B6D700273C27 /* tanziUITests.m */; };
 		51A208101BD518D400187D6A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A2080F1BD518D400187D6A /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
 		51A208121BD5201E00187D6A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A208111BD5201E00187D6A /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
+		51A9E3AF1BD5C0190019C9EB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A9E3AE1BD5C0190019C9EB /* LoginViewController.m */; settings = {ASSET_TAGS = (); }; };
 		51D3EC3F1BC80509005BE683 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D3EC3C1BC80509005BE683 /* SecondViewController.m */; settings = {ASSET_TAGS = (); }; };
 		51D3EC401BC80509005BE683 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D3EC3E1BC80509005BE683 /* FirstViewController.m */; settings = {ASSET_TAGS = (); }; };
 		51FCA2E41BC7FDC40080C22A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51FCA2E31BC7FDC40080C22A /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
@@ -64,6 +65,8 @@
 		517EDAA61BC7B6D700273C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51A2080F1BD518D400187D6A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		51A208111BD5201E00187D6A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		51A9E3AD1BD5C0190019C9EB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		51A9E3AE1BD5C0190019C9EB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		51D3EC3B1BC80509005BE683 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		51D3EC3C1BC80509005BE683 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		51D3EC3D1BC80509005BE683 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
@@ -128,21 +131,23 @@
 			children = (
 				517EDA821BC7B6D700273C27 /* AppDelegate.h */,
 				517EDA831BC7B6D700273C27 /* AppDelegate.m */,
-				51FCA2E31BC7FDC40080C22A /* LaunchScreen.storyboard */,
-				51D3EC3B1BC80509005BE683 /* SecondViewController.h */,
-				51D3EC3C1BC80509005BE683 /* SecondViewController.m */,
-				51D3EC3D1BC80509005BE683 /* FirstViewController.h */,
-				5145C5091BC9E81C008C2638 /* KeychainItemWrapper.h */,
-				5145C50A1BC9E81C008C2638 /* KeychainItemWrapper.m */,
-				51D3EC3E1BC80509005BE683 /* FirstViewController.m */,
-				517EDA851BC7B6D700273C27 /* ViewController.h */,
-				517EDA861BC7B6D700273C27 /* ViewController.m */,
 				517EDA8B1BC7B6D700273C27 /* Assets.xcassets */,
-				517EDA8D1BC7B6D700273C27 /* Main.storyboard */,
-				517EDA901BC7B6D700273C27 /* Info.plist */,
-				517EDA7F1BC7B6D700273C27 /* Supporting Files */,
 				5145C5061BC9DAD2008C2638 /* AuthManager.h */,
 				5145C5071BC9DAD2008C2638 /* AuthManager.m */,
+				51D3EC3D1BC80509005BE683 /* FirstViewController.h */,
+				51D3EC3E1BC80509005BE683 /* FirstViewController.m */,
+				517EDA901BC7B6D700273C27 /* Info.plist */,
+				5145C5091BC9E81C008C2638 /* KeychainItemWrapper.h */,
+				5145C50A1BC9E81C008C2638 /* KeychainItemWrapper.m */,
+				51FCA2E31BC7FDC40080C22A /* LaunchScreen.storyboard */,
+				517EDA8D1BC7B6D700273C27 /* Main.storyboard */,
+				51D3EC3B1BC80509005BE683 /* SecondViewController.h */,
+				51D3EC3C1BC80509005BE683 /* SecondViewController.m */,
+				517EDA851BC7B6D700273C27 /* ViewController.h */,
+				517EDA861BC7B6D700273C27 /* ViewController.m */,
+				517EDA7F1BC7B6D700273C27 /* Supporting Files */,
+				51A9E3AD1BD5C0190019C9EB /* LoginViewController.h */,
+				51A9E3AE1BD5C0190019C9EB /* LoginViewController.m */,
 			);
 			path = tanzi;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51A9E3AF1BD5C0190019C9EB /* LoginViewController.m in Sources */,
 				51D3EC3F1BC80509005BE683 /* SecondViewController.m in Sources */,
 				5145C5081BC9DAD2008C2638 /* AuthManager.m in Sources */,
 				517EDA871BC7B6D700273C27 /* ViewController.m in Sources */,

@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @protocol AuthManagerDelegate <NSObject>
-- (void)authenticatedUserId:(NSString *)userid WithUsername:(NSString *)username;
+- (void)authenticationSuccessWithUserId:(NSString *)userid WithUsername:(NSString *)username;
+- (void)authenticationFailed;
 @end
 
 
@@ -21,6 +22,8 @@
 
 -(NSString *) UserId;
 -(BOOL) isAuthenticated;
--(void) AuthenticateUser:(NSString *)username WithPassword:(NSString *)password;
+-(void) LoginWithFacebook;
+-(void) LoginWithNative:(NSString *)username WithPassword:(NSString *)password;
+-(void) Logout;
 
 @end

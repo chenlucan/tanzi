@@ -14,7 +14,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface AppDelegate () <AuthManagerDelegate>
-
+@property (nonatomic, strong) UIViewController* mainWindowHolder_;
 @end
 
 @implementation AppDelegate
@@ -23,15 +23,24 @@
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     
-    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"tanziId" accessGroup:nil];
-    [keychainItem setObject:@"lucan" forKey:kSecValueData];
-    [keychainItem setObject:@"lucan" forKey:kSecAttrAccount];
-    
-    NSString *password = [keychainItem objectForKey:kSecValueData];
-    NSString *username = [keychainItem objectForKey:kSecAttrAccount];
+//    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"tanziId" accessGroup:nil];
+//    [keychainItem setObject:@"lucan" forKey:kSecValueData];
+//    [keychainItem setObject:@"lucan" forKey:kSecAttrAccount];
+//    
+//    NSString *password = [keychainItem objectForKey:kSecValueData];
+//    NSString *username = [keychainItem objectForKey:kSecAttrAccount];
     
     [AuthManager getInstance].delegate = self;
-    [[AuthManager getInstance] AuthenticateUser:username WithPassword:password];
+    if ([AuthManager getInstance].isAuthenticated) {
+        if (!self.mainWindowHolder_) {
+            self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+            self.mainWindowHolder_ = self.window.rootViewController;
+        }
+    } else {
+        UIViewController* rootController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:rootController];
+        self.window.rootViewController = navigation;
+    }
     
     return YES;
 }
@@ -68,7 +77,13 @@
 }
 
 #pragma mark - AuthManagerDelegate
-- (void)authenticatedUserId:(NSString *)userid WithUsername:(NSString *)username {
+- (void)authenticationSuccessWithUserId:(NSString *)userid WithUsername:(NSString *)username {
+    if (self.mainWindowHolder_) {
+        self.window.rootViewController = self.mainWindowHolder_;
+    } else {
+        self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+    }
+
     if ([userid length] != 0) {
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             // successful authenticated username:
@@ -84,6 +99,13 @@
             }
         });
     }
+}
+- (void)authenticationFailed {
+    self.mainWindowHolder_ = self.window.rootViewController;
+    
+    UIViewController* rootController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:rootController];
+    self.window.rootViewController = navigation;
 }
 
 @end

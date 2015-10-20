@@ -1,8 +1,7 @@
 
 #import "SecondViewController.h"
 
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "AuthManager.h"
 
 @interface SecondViewController ()
 
@@ -12,10 +11,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    loginButton.readPermissions = @[@"public_profile", @"email", @"user_friends"];
-    loginButton.center = self.view.center;
-    [self.view addSubview:loginButton];
 }
 
 - (BOOL)application:(UIApplication *)application
@@ -28,6 +23,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)onLogout:(id)sender {
+    [[AuthManager getInstance] Logout];
 }
 
 @end
