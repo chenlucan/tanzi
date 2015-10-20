@@ -23,13 +23,6 @@
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     
-//    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"tanziId" accessGroup:nil];
-//    [keychainItem setObject:@"lucan" forKey:kSecValueData];
-//    [keychainItem setObject:@"lucan" forKey:kSecAttrAccount];
-//    
-//    NSString *password = [keychainItem objectForKey:kSecValueData];
-//    NSString *username = [keychainItem objectForKey:kSecAttrAccount];
-    
     [AuthManager getInstance].delegate = self;
     if ([AuthManager getInstance].isAuthenticated) {
         if (!self.mainWindowHolder_) {
@@ -72,8 +65,7 @@
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                                           openURL:url
                                                 sourceApplication:sourceApplication
-                                                       annotation:annotation
-            ];
+                                                       annotation:annotation];
 }
 
 #pragma mark - AuthManagerDelegate
@@ -86,8 +78,6 @@
 
     if ([userid length] != 0) {
         dispatch_async(dispatch_get_main_queue(), ^(void) {
-            // successful authenticated username:
-            //  - userid is from auth server
             NSLog(@"user[%@] is authenticated successfully", userid);
             UITabBarController* tbc = self.window.rootViewController;
             for (UIViewController *v in tbc.viewControllers)

@@ -20,6 +20,7 @@
 		51A208101BD518D400187D6A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A2080F1BD518D400187D6A /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
 		51A208121BD5201E00187D6A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A208111BD5201E00187D6A /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
 		51A9E3AF1BD5C0190019C9EB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A9E3AE1BD5C0190019C9EB /* LoginViewController.m */; settings = {ASSET_TAGS = (); }; };
+		51A9E3B11BD625B30019C9EB /* fb_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 51A9E3B01BD625B30019C9EB /* fb_logo.png */; settings = {ASSET_TAGS = (); }; };
 		51D3EC3F1BC80509005BE683 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D3EC3C1BC80509005BE683 /* SecondViewController.m */; settings = {ASSET_TAGS = (); }; };
 		51D3EC401BC80509005BE683 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D3EC3E1BC80509005BE683 /* FirstViewController.m */; settings = {ASSET_TAGS = (); }; };
 		51FCA2E41BC7FDC40080C22A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51FCA2E31BC7FDC40080C22A /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
@@ -67,6 +68,7 @@
 		51A208111BD5201E00187D6A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		51A9E3AD1BD5C0190019C9EB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		51A9E3AE1BD5C0190019C9EB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		51A9E3B01BD625B30019C9EB /* fb_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fb_logo.png; path = tanzi/Assets.xcassets/fb_logo.png; sourceTree = "<group>"; };
 		51D3EC3B1BC80509005BE683 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		51D3EC3C1BC80509005BE683 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		51D3EC3D1BC80509005BE683 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		517EDA731BC7B6D700273C27 = {
 			isa = PBXGroup;
 			children = (
+				51A9E3B01BD625B30019C9EB /* fb_logo.png */,
 				517EDA7E1BC7B6D700273C27 /* tanzi */,
 				517EDA981BC7B6D700273C27 /* tanziTests */,
 				517EDAA31BC7B6D700273C27 /* tanziUITests */,
@@ -304,6 +307,7 @@
 			files = (
 				51FCA2E41BC7FDC40080C22A /* LaunchScreen.storyboard in Resources */,
 				517EDA8F1BC7B6D700273C27 /* Main.storyboard in Resources */,
+				51A9E3B11BD625B30019C9EB /* fb_logo.png in Resources */,
 				517EDA8C1BC7B6D700273C27 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
