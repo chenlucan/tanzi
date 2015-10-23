@@ -12,15 +12,17 @@
 #import <WebRTC/RTCSessionDescription.h>
 #import <WebRTC/RTCSessionDescriptionDelegate.h>
 
-#import <PubNub/PubNub.h>
-
 #import <QBImagePickerController/QBImagePickerController.h>
 
-@interface FirstViewController () <RTCPeerConnectionDelegate, RTCSessionDescriptionDelegate, PNObjectEventListener, RTCDataChannelDelegate, UINavigationControllerDelegate, QBImagePickerControllerDelegate>
+#import "SignalingClient.h"
+
+@interface FirstViewController () <RTCPeerConnectionDelegate, RTCSessionDescriptionDelegate, RTCDataChannelDelegate, UINavigationControllerDelegate, QBImagePickerControllerDelegate, SignalingClientDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btnConnect;
 @property (weak, nonatomic) IBOutlet UILabel *labelStatus;
 @property (weak, nonatomic) IBOutlet UITextField *txtFieldEmail;
 @property (weak, nonatomic) IBOutlet UIButton *btnUpload;
+
+@property (nonatomic, strong) SignalingClient *signaling_;
 
 @property(nonatomic, strong) NSString *roleId_;
 @property(nonatomic, strong) NSString *userId_;
@@ -31,7 +33,6 @@
 @property(nonatomic, strong) RTCPeerConnectionFactory *factory;
 @property(nonatomic, strong) RTCDataChannel *dataChannel;
 @property(nonatomic, strong) QBImagePickerController *pickController;
-@property(nonatomic) PubNub *client;
 @property(nonatomic) BOOL channelOpened;
 
 @property(nonatomic, strong) NSMutableData *rc_file_data;
@@ -50,6 +51,8 @@
 
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];
+    self.signaling_ = [[SignalingClient alloc] init];
+    self.signaling_.delegate = self;
     return self;
 }
 
@@ -226,9 +229,7 @@
             [self.messageQueue addObject:dataDict];
         });
     } else {
-        [self.client publish:dataDict toChannel:self.userId_ withCompletion:^(PNPublishStatus *status) {
-            [self processPublishStatus:status];
-        }];
+        [self.signaling_ publish:dataDict to:self.userId_];
     }
 }
 
@@ -252,9 +253,7 @@
                                @"userID":self.roleId_,
                                @"fullPart":json
                              };
-    [self.client publish:dataDict toChannel:self.userId_ withCompletion:^(PNPublishStatus *status) {
-        [self processPublishStatus:status];
-    }];
+    [self.signaling_ publish:dataDict to:self.userId_];
 }
 
 // Called when setting a local or remote description.
@@ -262,20 +261,9 @@
 didSetSessionDescriptionWithError:(NSError *)error {
 }
 
-#pragma mark - PNObjectEventListener
-
-/**
- @brief  Notify listener about new message which arrived from one of remote data object's live feed
- on which client subscribed at this moment.
- 
- @param client  Reference on \b PubNub client which triggered this callback method call.
- @param message Reference on \b PNResult instance which store message information in \c data
- property.
- 
- @since 4.0
- */
-- (void)client:(PubNub *)client didReceiveMessage:(PNMessageResult *)message {
-    NSDictionary *msg = message.data.message;
+#pragma mark - SignalingClientDelegate
+- (void)OnMessage:(NSDictionary*)message {
+    NSDictionary *msg = message;
     if (![msg objectForKey:@"userID"]) {
         NSLog(@"key userID is not present, skip this message");
         return;
@@ -319,108 +307,9 @@ didSetSessionDescriptionWithError:(NSError *)error {
         self.offer_answer_done = YES;
         
         for (NSDictionary *dataDict in self.messageQueue) {
-            NSLog(@"Sending each icecandidate");
-            [self.client publish:dataDict toChannel:self.userId_ withCompletion:^(PNPublishStatus *status) {
-                [self processPublishStatus:status];
-            }];
+            [self.signaling_ publish:dataDict to:self.userId_];
         }
         [self.messageQueue removeAllObjects];
-    }
-    
-    // Handle new message stored in message.data.message
-    if (message.data.actualChannel) {
-        
-        // Message has been received on channel group stored in
-        // message.data.subscribedChannel
-    }
-    else {
-        
-        // Message has been received on channel stored in
-        // message.data.subscribedChannel
-    }
-}
-
-/**
- @brief  Notify listener about new presence events which arrived from one of remote data object's
- presence live feed on which client subscribed at this moment.
- 
- @param client Reference on \b PubNub client which triggered this callback method call.
- @param event  Reference on \b PNResult instance which store presence event information in
- \c data property.
- 
- @since 4.0
- */
-- (void)client:(PubNub *)client didReceivePresenceEvent:(PNPresenceEventResult *)event {
-    NSLog(@"PubNub didReceivePresenceEvent: %@", event.data.presenceEvent);
-    // Handle presence event event.data.presenceEvent (one of: join, leave, timeout,
-    // state-change).
-    if (event.data.actualChannel) {
-        
-        // Presence event has been received on channel group stored in
-        // event.data.subscribedChannel
-    }
-    else {
-        
-        // Presence event has been received on channel stored in
-        // event.data.subscribedChannel
-    }
-}
-
-
-///------------------------------------------------
-/// @name Status change handler.
-///------------------------------------------------
-
-/**
- @brief      Notify listener about subscription state changes.
- @discussion This callback can fire when client tried to subscribe on channels for which it doesn't
- have access rights or when network went down and client unexpectedly disconnected.
- 
- @param client Reference on \b PubNub client which triggered this callback method call.
- @param status  Reference on \b PNStatus instance which store subscriber state information.
- 
- @since 4.0
- */
-- (void)client:(PubNub *)client didReceiveStatus:(PNSubscribeStatus *)status {
-    NSLog(@"PubNub didReceiveStatus");
-    
-    if (status.category == PNUnexpectedDisconnectCategory) {
-        // This event happens when radio / connectivity is lost
-    }
-    
-    else if (status.category == PNConnectedCategory) {
-        
-        // Connect event. You can do stuff like publish, and know you'll get it.
-        // Or just use the connected event to confirm you are subscribed for
-        // UI / internal notifications, etc
-        
-        [self.client publish:@"Hello from the PubNub Objective-C SDK" toChannel:@"my_channel"
-              withCompletion:^(PNPublishStatus *status) {
-                  
-                  // Check whether request successfully completed or not.
-                  if (!status.isError) {
-                      
-                      // Message successfully published to specified channel.
-                  }
-                  // Request processing failed.
-                  else {
-                      
-                      // Handle message publish error. Check 'category' property to find out possible issue
-                      // because of which request did fail.
-                      //
-                      // Request can be resent using: [status retry];
-                  }
-              }];
-    }
-    else if (status.category == PNReconnectedCategory) {
-        
-        // Happens as part of our regular operation. This event happens when
-        // radio / connectivity is lost, then regained.
-    }
-    else if (status.category == PNDecryptionErrorCategory) {
-        
-        // Handle messsage decryption error. Probably client configured to
-        // encrypt messages and on live data feed it received plain text.
     }
 }
 
@@ -548,50 +437,6 @@ didReceiveMessageWithBuffer:(RTCDataBuffer*)buffer{
 }
 
 #pragma mark - Private
-- (void)showAlertWithMessage:(NSString*)message {
-  UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:nil
-                                                      message:message
-                                                     delegate:nil
-                                            cancelButtonTitle:@"OK"
-                                            otherButtonTitles:nil];
-  [alertView show];
-}
-
-- (void)processPublishStatus:(PNPublishStatus *)status {
-    switch(status.category) {
-        case PNUnknownCategory:
-            break;
-        case PNAcknowledgmentCategory:
-            break;
-        case PNAccessDeniedCategory:
-            break;
-        case PNTimeoutCategory:
-            break;
-        case PNNetworkIssuesCategory:
-            break;
-        case PNConnectedCategory:
-            break;
-        case PNReconnectedCategory:
-            break;
-        case PNDisconnectedCategory:
-            break;
-        case PNUnexpectedDisconnectCategory:
-            break;
-        case PNCancelledCategory:
-            break;
-        case PNBadRequestCategory:
-            break;
-        case PNMalformedResponseCategory:
-            break;
-        case PNDecryptionErrorCategory:
-            break;
-        case PNTLSConnectionFailedCategory:
-            break;
-        case PNTLSUntrustedCertificateCategory:
-            break;
-    }
-}
-
 - (void) sendData:(NSData *)imgData name:(NSString *)name {
     // max size we could send 66528 bytes
     // 8 bytes  - length - NSUInteger
@@ -659,11 +504,6 @@ didReceiveMessageWithBuffer:(RTCDataBuffer*)buffer{
         self.dataChannel = nil;
         self.peerConnection = nil;
     }
-    PNConfiguration *configuration = [PNConfiguration configurationWithPublishKey:@"pub-c-540d3bfa-dd7a-4520-a9e4-907370d2ce37"
-                                                                     subscribeKey:@"sub-c-3af2bc02-2b93-11e5-9bdb-0619f8945a4f"];
-    self.client = [PubNub clientWithConfiguration:configuration];
-    [self.client addListener:self];
-    [self.client subscribeToChannels:@[self.userId_] withPresence:YES];
     
     self.channelOpened = NO;
     

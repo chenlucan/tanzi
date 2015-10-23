@@ -79,7 +79,7 @@
     if ([userid length] != 0) {
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             NSLog(@"user[%@] is authenticated successfully", userid);
-            UITabBarController* tbc = self.window.rootViewController;
+            UITabBarController* tbc = (UITabBarController*)self.window.rootViewController;
             for (UIViewController *v in tbc.viewControllers)
             {
                 if ([v isKindOfClass:[FirstViewController class]]) {

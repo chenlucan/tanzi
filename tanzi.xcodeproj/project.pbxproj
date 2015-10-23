@@ -24,6 +24,7 @@
 		51A9E3B31BD66A2B0019C9EB /* account-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 51A9E3B21BD66A2B0019C9EB /* account-icon.png */; settings = {ASSET_TAGS = (); }; };
 		51D3EC3F1BC80509005BE683 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D3EC3C1BC80509005BE683 /* SecondViewController.m */; settings = {ASSET_TAGS = (); }; };
 		51D3EC401BC80509005BE683 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D3EC3E1BC80509005BE683 /* FirstViewController.m */; settings = {ASSET_TAGS = (); }; };
+		51E7890C1BD9118000012CED /* SignalingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E7890B1BD9118000012CED /* SignalingClient.m */; settings = {ASSET_TAGS = (); }; };
 		51FCA2E41BC7FDC40080C22A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51FCA2E31BC7FDC40080C22A /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,8 @@
 		51D3EC3C1BC80509005BE683 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		51D3EC3D1BC80509005BE683 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		51D3EC3E1BC80509005BE683 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		51E7890A1BD9118000012CED /* SignalingClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignalingClient.h; sourceTree = "<group>"; };
+		51E7890B1BD9118000012CED /* SignalingClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignalingClient.m; sourceTree = "<group>"; };
 		51FCA2E31BC7FDC40080C22A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A90D8FEC08CFEAEE7BECDF7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B8F3AFEC7D9321221009EDB0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,6 +157,8 @@
 				517EDA7F1BC7B6D700273C27 /* Supporting Files */,
 				51A9E3AD1BD5C0190019C9EB /* LoginViewController.h */,
 				51A9E3AE1BD5C0190019C9EB /* LoginViewController.m */,
+				51E7890A1BD9118000012CED /* SignalingClient.h */,
+				51E7890B1BD9118000012CED /* SignalingClient.m */,
 			);
 			path = tanzi;
 			sourceTree = "<group>";
@@ -370,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51E7890C1BD9118000012CED /* SignalingClient.m in Sources */,
 				51A9E3AF1BD5C0190019C9EB /* LoginViewController.m in Sources */,
 				51D3EC3F1BC80509005BE683 /* SecondViewController.m in Sources */,
 				5145C5081BC9DAD2008C2638 /* AuthManager.m in Sources */,
