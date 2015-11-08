@@ -13,6 +13,7 @@
 @interface SignalingClient() <PNObjectEventListener>
 
 @property(nonatomic) PubNub *client_;
+@property(nonatomic, strong) NSString* publicChannel_;
 
 @end
 
@@ -25,9 +26,17 @@
                                                                          subscribeKey:@"sub-c-3af2bc02-2b93-11e5-9bdb-0619f8945a4f"];
         self.client_ = [PubNub clientWithConfiguration:configuration];
         [self.client_ addListener:self];
-        [self.client_ subscribeToChannels:@[@"public channel"] withPresence:YES];
+
     }
     return self;
+}
+
+-(void)setPublicChannel:(NSString *)publicChannel {
+    self.publicChannel_ = publicChannel;
+}
+
+-(void)subscribe:(NSString *)channelid {
+    [self.client_ subscribeToChannels:@[channelid] withPresence:YES];
 }
 
 - (void)publish:(NSDictionary*)message to:(NSString *)channel {
@@ -36,9 +45,14 @@
     }];
 }
 
+-(void)publishToPublicChannel:(NSDictionary *)message {
+    [self publish:message to:self.publicChannel_];
+}
+
 #pragma mark - PNObjectEventListener
 - (void)client:(PubNub *)client didReceiveMessage:(PNMessageResult *)message {
-    
+    NSDictionary *msg = message.data.message;
+    [self.delegate OnMessage:msg fromChannel:self.publicChannel_];
 }
 
 - (void)client:(PubNub *)client didReceivePresenceEvent:(PNPresenceEventResult *)event {

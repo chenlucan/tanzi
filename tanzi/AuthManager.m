@@ -49,10 +49,21 @@ static AuthManager *instance;
 
 -(BOOL) isAuthenticated {
     if ([FBSDKAccessToken currentAccessToken]) {
+        self.UserId_ = [FBSDKAccessToken currentAccessToken].userID;
         self.source_ = LoginSource_FB;
         return YES;
     }
     return  NO;
+}
+
+-(void) CheckAuthentication {
+    if ([FBSDKAccessToken currentAccessToken]) {
+        self.UserId_ = [FBSDKAccessToken currentAccessToken].userID;
+        self.source_ = LoginSource_FB;
+        [self.delegate authenticationSuccessWithUserId:[FBSDKAccessToken currentAccessToken].userID  WithUsername:[FBSDKAccessToken currentAccessToken].userID];
+    } else {
+        [self.delegate authenticationFailed];
+    }
 }
 
 -(void) LoginWithFacebook {
