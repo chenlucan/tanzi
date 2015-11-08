@@ -29,13 +29,13 @@
 }
 
 -(BOOL)AddConnection:(NSString *)otherPeerId selfPeerId:(NSString *)selfPeerId channelId:(NSString *)channelId {
-    // remove already closed Connection,
-    // so we don't need trigger remove operation from Connection state change
-    for (Connection *c in self.connections_) {
-        if (![c IsOpen]) {
-            [self.connections_ removeObjectForKey:[c peerid]];
-        }
-    }
+//    // remove already closed Connection,
+//    // so we don't need trigger remove operation from Connection state change
+//    for (NSString *c in self.connections_) {
+//        if (![self.connections_[c] IsOpen]) {
+//            [self.connections_ removeObjectForKey:c ];
+//        }
+//    }
     
     if ([self.connections_ objectForKey:otherPeerId]) {
         NSLog(@"Connection with otherPeerId[%@] already exists", otherPeerId);

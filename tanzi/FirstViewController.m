@@ -51,6 +51,7 @@
     // here's the public channel for this account
     [self.signaling_ setPublicChannel:uid];
     [self.signaling_ subscribe:uid];
+    NSLog(@"got userid[%@] as public channel", self.userId_);
 }
 
 - (void) initAndConnect {

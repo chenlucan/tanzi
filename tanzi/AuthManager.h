@@ -22,6 +22,7 @@
 
 -(NSString *) UserId;
 -(BOOL) isAuthenticated;
+-(void) CheckAuthentication;
 -(void) LoginWithFacebook;
 -(void) LoginWithNative:(NSString *)username WithPassword:(NSString *)password;
 -(void) Logout;

@@ -294,9 +294,10 @@
 // New data channel has been opened.
 - (void)peerConnection:(RTCPeerConnection*)peerConnection
     didOpenDataChannel:(RTCDataChannel*)dataChannel {
+    NSLog(@"peerConnection didOpenDataChannel 1");
     if (dataChannel == self.dataChannel_) {
         self.channelIsOpen_ = YES;
-        NSLog(@"peerConnection didOpenDataChannel");
+        NSLog(@"peerConnection didOpenDataChannel 2");
     }
 }
 
@@ -304,8 +305,8 @@
 // Called when creating a session.
 - (void)peerConnection:(RTCPeerConnection *)peerConnection didCreateSessionDescription:(RTCSessionDescription *)sdp error:(NSError *)error {
     [peerConnection setLocalDescriptionWithDelegate:self sessionDescription:sdp];
-    NSDictionary *data = [MsgFormatter ToOfferSessionDescription:self.selfPeerId_ ToDeviceId:self.otherPeerId_ type:sdp.type sdp:sdp.description];
-    [self.signaling_ publish:data to:self.channelId_];
+//    NSDictionary *data = [MsgFormatter ToOfferSessionDescription:self.selfPeerId_ ToDeviceId:self.otherPeerId_ type:sdp.type sdp:sdp.description];
+//    [self.signaling_ publish:data to:self.channelId_];
 }
 
 // Called when setting a local or remote description.

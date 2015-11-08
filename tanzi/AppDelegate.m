@@ -24,16 +24,18 @@
                              didFinishLaunchingWithOptions:launchOptions];
     
     [AuthManager getInstance].delegate = self;
-    if ([AuthManager getInstance].isAuthenticated) {
-        if (!self.mainWindowHolder_) {
-            self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
-            self.mainWindowHolder_ = self.window.rootViewController;
-        }
-    } else {
-        UIViewController* rootController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:rootController];
-        self.window.rootViewController = navigation;
-    }
+    [[AuthManager getInstance] CheckAuthentication];
+    
+//    if ([AuthManager getInstance].isAuthenticated) {
+//        if (!self.mainWindowHolder_) {
+//            self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+//            self.mainWindowHolder_ = self.window.rootViewController;
+//        }
+//    } else {
+//        UIViewController* rootController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginViewController"];
+//        UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:rootController];
+//        self.window.rootViewController = navigation;
+//    }
     
     return YES;
 }
@@ -74,6 +76,7 @@
         self.window.rootViewController = self.mainWindowHolder_;
     } else {
         self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+        self.mainWindowHolder_ = self.window.rootViewController;
     }
 
     if ([userid length] != 0) {
