@@ -8,7 +8,7 @@
 
 #import "Connection.h"
 
-#include "MsgFormatter.h"
+#import "MsgFormatter.h"
 
 #import <WebRTC/RTCDataChannel.h>
 #import <WebRTC/RTCICECandidate.h>
@@ -78,6 +78,13 @@
 //        self.offer_answer_done_ = NO;
     }
     return self;
+}
+
+-(void)dealloc {
+    //cleanup code
+    [self.dataChannel_ close];
+    [self.peerConnection_ close];
+    NSLog(@"Deallocating connection [%@]", self.otherPeerId_);
 }
 
 -(NSString *)peerid {

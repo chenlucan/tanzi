@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Connection.h"
 #import "SignalingClient.h"
 
 @interface ConnectionManager : NSObject
 
 -(instancetype)initWithSignaling:(SignalingClient *)client;
+
 // triggered by receiving heartbeat, so it's adding Connection which initiates the offer
 -(BOOL)AddConnection:(NSString *)otherPeerId
           selfPeerId:(NSString *)selfPeerId

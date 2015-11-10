@@ -2,7 +2,7 @@
 
 #import <QBImagePickerController/QBImagePickerController.h>
 
-#include "ConnectionManager.h"
+#import "ConnectionManager.h"
 
 #import "MsgFormatter.h"
 

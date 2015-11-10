@@ -8,10 +8,9 @@
 
 #import "ConnectionManager.h"
 
-#include "Connection.h"
-
 @interface ConnectionManager()
 
+//@property(nonatomic, weak)   ConnectionDelegate *connectionDelegate_;
 @property(nonatomic, weak)   SignalingClient *signaling_;
 @property(nonatomic, strong) NSMutableDictionary<NSString*, Connection*> *connections_;
 
@@ -23,19 +22,20 @@
     self = [super init];
     if (self) {
         self.signaling_ = client;
+//        self.connectionDelegate_ = connectionDelegate;
         self.connections_ = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
 
 -(BOOL)AddConnection:(NSString *)otherPeerId selfPeerId:(NSString *)selfPeerId channelId:(NSString *)channelId {
-//    // remove already closed Connection,
-//    // so we don't need trigger remove operation from Connection state change
-//    for (NSString *c in self.connections_) {
-//        if (![self.connections_[c] IsOpen]) {
-//            [self.connections_ removeObjectForKey:c ];
-//        }
-//    }
+    // remove already closed Connection,
+    // so we don't need trigger remove operation from Connection state change
+    for (NSString *c in self.connections_) {
+        if (![self.connections_[c] IsOpen]) {
+            [self.connections_ removeObjectForKey:c ];
+        }
+    }
     
     if ([self.connections_ objectForKey:otherPeerId]) {
         NSLog(@"Connection with otherPeerId[%@] already exists", otherPeerId);
