@@ -10,9 +10,8 @@
 
 #include "Connection.h"
 
-@interface ConnectionManager()
-
-@property(nonatomic, weak)   SignalingClient *signaling_;
+@interface ConnectionManager() <ConnectionDelegate>
+@property(nonatomic, weak)   SignalingClient    *signaling_;
 @property(nonatomic, strong) NSMutableDictionary<NSString*, Connection*> *connections_;
 
 @end
@@ -22,20 +21,17 @@
 -(instancetype)initWithSignaling:(SignalingClient *)client {
     self = [super init];
     if (self) {
-        self.signaling_ = client;
-        self.connections_ = [[NSMutableDictionary alloc] init];
+        self.signaling_    = client;
+        self.connections_  = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
 
--(BOOL)AddConnection:(NSString *)otherPeerId selfPeerId:(NSString *)selfPeerId channelId:(NSString *)channelId {
-//    // remove already closed Connection,
-//    // so we don't need trigger remove operation from Connection state change
-//    for (NSString *c in self.connections_) {
-//        if (![self.connections_[c] IsOpen]) {
-//            [self.connections_ removeObjectForKey:c ];
-//        }
-//    }
+-(BOOL)AddConnection:(NSString *)otherPeerId
+          selfPeerId:(NSString *)selfPeerId
+           channelId:(NSString *)channelId {
+    // deleting Connection crashes app
+    // (todo) find a way to delete closed Connection
     
     if ([self.connections_ objectForKey:otherPeerId]) {
         NSLog(@"Connection with otherPeerId[%@] already exists", otherPeerId);
@@ -46,11 +42,13 @@
         NSLog(@"ConnectionManager is already full, could not add more.");
         return NO;
     }
-    [self.connections_ setObject:[[Connection alloc] initWithSignaling:self.signaling_
-                                                            OtherPeerId:otherPeerId
-                                                             selfPeerId:selfPeerId
-                                                              ChannelId:channelId]
-                          forKey:otherPeerId];
+    Connection* conn = [[Connection alloc] initWithSignaling:self.signaling_
+                                                 OtherPeerId:otherPeerId
+                                                  selfPeerId:selfPeerId
+                                                   ChannelId:channelId];
+    conn.delegate = self;
+    [self.connections_ setObject:conn forKey:otherPeerId];
+    
     return YES;
 }
 
@@ -70,5 +68,24 @@
         return;
     }
     [conn OnAnswerSessionDescription:msg];
+}
+
+#pragma mark - ConnectionDelegate
+-(void)OnConnectionOpened:(Connection*)connection {
+
+}
+
+-(void)OnConnectionClosed:(Connection*)connection {
+    // deleting Connection crashes app
+    // (todo) find a way to delete closed Connection
+    
+//    dispatch_async(dispatch_get_main_queue(), ^(void) {
+//        // its called from Connection
+//        // because we need delete this Connection,
+//        // we have to enqueue into main queue
+//        // otherwise this call will return back to deallocated Connection object
+//        [self.connections_ removeObjectForKey:[connection peerid]];
+//        NSLog(@"Removed connection with id[%@]", [connection peerid]);
+//    });
 }
 @end

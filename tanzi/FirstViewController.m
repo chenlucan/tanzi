@@ -2,13 +2,13 @@
 
 #import <QBImagePickerController/QBImagePickerController.h>
 
-#include "ConnectionManager.h"
+#import "ConnectionManager.h"
 
 #import "MsgFormatter.h"
 
 #import "SignalingClient.h"
 
-@interface FirstViewController () < UINavigationControllerDelegate, QBImagePickerControllerDelegate, SignalingClientDelegate>
+@interface FirstViewController () <UINavigationControllerDelegate, QBImagePickerControllerDelegate, SignalingClientDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btnConnect;
 @property (weak, nonatomic) IBOutlet UILabel *labelStatus;
 @property (weak, nonatomic) IBOutlet UITextField *txtFieldEmail;

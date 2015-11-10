@@ -10,7 +10,20 @@
 
 #include "SignalingClient.h"
 
+@class Connection;
+@class ConnectionDelegate;
+
+@protocol ConnectionDelegate <NSObject>
+
+@required
+-(void)OnConnectionOpened:(Connection*)connection;
+-(void)OnConnectionClosed:(Connection*)connection;
+
+@end
+
 @interface Connection : NSObject
+
+@property(nonatomic, weak) id <ConnectionDelegate> delegate;
 
 -(instancetype)initWithSignaling:(SignalingClient *)client
                      OtherPeerId:(NSString *)otherPeerid

@@ -80,6 +80,12 @@
     return self;
 }
 
+-(void)dealloc {
+    [self.dataChannel_ close];
+    [self.peerConnection_ close];
+    NSLog(@"deallocated id[%@]", self.otherPeerId_);
+}
+
 -(NSString *)peerid {
     return self.otherPeerId_;
 }
@@ -233,28 +239,41 @@
     switch (newState) {
         case RTCICEConnectionNew:
             NSLog(@"peerConnection iceConnectionChanged RTCICEConnectionNew");
+            // in progress of finalizing connection
+            // don't do anything, just return;
             break;
         case RTCICEConnectionChecking:
             NSLog(@"peerConnection iceConnectionChanged RTCICEConnectionChecking");
+            // in progress of finalizing connection
+            // don't do anything, just return;
             break;
         case RTCICEConnectionConnected:
             NSLog(@"peerConnection iceConnectionChanged RTCICEConnectionConnected");
+            // in progress of finalizing connection
+            // trying to find the best connection
+            // don't do anything, just return;
             break;
         case RTCICEConnectionCompleted:
             NSLog(@"peerConnection iceConnectionChanged RTCICEConnectionCompleted");
+            [self.delegate OnConnectionOpened:self];
             break;
         case RTCICEConnectionFailed:
             NSLog(@"peerConnection iceConnectionChanged RTCICEConnectionFailed");
+            // failed to connect
+            [self.delegate OnConnectionClosed:self];
             break;
         case RTCICEConnectionDisconnected:
             NSLog(@"peerConnection iceConnectionChanged RTCICEConnectionDisconnected");
+            [self.delegate OnConnectionClosed:self];
             break;
         case RTCICEConnectionClosed:
             NSLog(@"peerConnection iceConnectionChanged RTCICEConnectionClosed");
+            [self.delegate OnConnectionClosed:self];
             break;
         default:
             break;
     }
+    
 }
 
 // Called any time the ICEGatheringState changes.

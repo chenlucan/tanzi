@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Connection.h"
 #import "SignalingClient.h"
 
 @interface ConnectionManager : NSObject
@@ -17,6 +18,7 @@
 -(BOOL)AddConnection:(NSString *)otherPeerId
           selfPeerId:(NSString *)selfPeerId
            channelId:(NSString *)channelId;
+
 -(void)OnAnswerICECandidate:(NSDictionary *)msg forPeer:(NSString *)peerid;
 -(void)OnAnswerSessionDescription:(NSDictionary *)msg forPeer:(NSString *)peerid;
 
