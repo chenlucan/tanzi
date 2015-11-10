@@ -72,10 +72,12 @@
 
 #pragma mark - ConnectionDelegate
 -(void)OnConnectionOpened:(Connection*)connection {
-
+    [self.delegate OnConnectionReady:[connection peerid]];
 }
 
 -(void)OnConnectionClosed:(Connection*)connection {
+    [self.delegate OnNotConnectionReady:[connection peerid]];
+    
     // deleting Connection crashes app
     // (todo) find a way to delete closed Connection
     

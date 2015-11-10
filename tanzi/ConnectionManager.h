@@ -11,7 +11,16 @@
 #import "Connection.h"
 #import "SignalingClient.h"
 
+@protocol ConnectionManagerDelegate <NSObject>
+
+-(void)OnConnectionReady:(NSString*)peerid;
+-(void)OnNotConnectionReady:(NSString*)peerid;
+
+@end
+
 @interface ConnectionManager : NSObject
+
+@property (nonatomic, weak) id<ConnectionManagerDelegate> delegate;
 
 -(instancetype)initWithSignaling:(SignalingClient *)client;
 // triggered by receiving heartbeat, so it's adding Connection which initiates the offer

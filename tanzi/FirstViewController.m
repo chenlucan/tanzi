@@ -8,10 +8,8 @@
 
 #import "SignalingClient.h"
 
-@interface FirstViewController () <UINavigationControllerDelegate, QBImagePickerControllerDelegate, SignalingClientDelegate>
-@property (weak, nonatomic) IBOutlet UIButton *btnConnect;
+@interface FirstViewController () <ConnectionManagerDelegate, UINavigationControllerDelegate, QBImagePickerControllerDelegate, SignalingClientDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *labelStatus;
-@property (weak, nonatomic) IBOutlet UITextField *txtFieldEmail;
 @property (weak, nonatomic) IBOutlet UIButton *btnUpload;
 
 @property (nonatomic, strong) SignalingClient *signaling_;
@@ -37,9 +35,12 @@
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];
     if (self) {
+        [self SetNotConnectedState];
+        
         self.signaling_ = [[SignalingClient alloc] init];
         self.signaling_.delegate = self;
         self.connections_ = [[ConnectionManager alloc] initWithSignaling:self.signaling_];
+        self.connections_.delegate = self;
         
         self.selfDeviceId_ = [MsgFormatter ToDeviceId];
     }
@@ -129,6 +130,38 @@
     // currently our connections are all offerer. If this msg is an offer from another peer, connection does not know this
     // Right now it can only rely on that msg from this
     [self.connections_ OnAnswerSessionDescription:msg forPeer:deviceId];
+}
+
+-(void) SetNotConnectedState {
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        self.btnUpload.enabled = NO;
+        [self.btnUpload setTitle:@"" forState:UIControlStateNormal];
+        [self.btnUpload setBackgroundColor:[UIColor grayColor]];
+        
+        [self.labelStatus setText:@"Connecting..."];
+        NSLog(@"OnNotConnectionReady received");
+    });
+}
+
+-(void) SetConnectedState {
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        self.btnUpload.enabled = NO;
+        [self.btnUpload setTitle:@"Upload" forState:UIControlStateNormal];
+                [self.btnUpload setBackgroundColor:[UIColor greenColor]];
+        self.btnUpload.enabled = YES;
+        
+        [self.labelStatus setText:@"Connected"];
+        NSLog(@"OnConnectionReady received");
+    });
+}
+
+#pragma mark - ConnectionManagerDelegate
+-(void)OnConnectionReady:(NSString*)peerid {
+    [self SetConnectedState];
+}
+
+-(void)OnNotConnectionReady:(NSString*)peerid {
+    [self SetNotConnectedState];
 }
 
 #pragma mark - SignalingClientDelegate

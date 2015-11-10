@@ -251,7 +251,7 @@
             NSLog(@"peerConnection iceConnectionChanged RTCICEConnectionConnected");
             // in progress of finalizing connection
             // trying to find the best connection
-            // don't do anything, just return;
+            [self.delegate OnConnectionOpened:self];
             break;
         case RTCICEConnectionCompleted:
             NSLog(@"peerConnection iceConnectionChanged RTCICEConnectionCompleted");
