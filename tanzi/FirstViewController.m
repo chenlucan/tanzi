@@ -55,27 +55,6 @@
     NSLog(@"got userid[%@] as public channel", self.userId_);
 }
 
-- (void) initAndConnect {
-    // Explanation: uid is for account from authentication
-    // it could have multi connections under the same id
-    // connection id should be different from userid
-    // however, since we only have one connection, no connection is used right now
-    
-    // todo:
-    //  - allow multi connections, diff by conneciton id
-    //  - userid has the same lifetime of authentication token, not netowrk status
-    //  - network status will affect candidates. Should be handled by webrtc candidate managers
-    //  - decouple userid, newconnection, newchannel
-    
-    [self connectPeer];
-}
-
-- (IBAction)onConnect:(id)sender {
-    NSLog(@"On connect, id:%@", self.userId_);
-    if ([self.userId_ length] != 0) {
-        [self connectPeer];
-    }
-}
 - (IBAction)onUpload:(id)sender {
     QBImagePickerController *imagePickerController = [QBImagePickerController new];
     imagePickerController.delegate = self;
@@ -313,12 +292,4 @@
 //    [self.dataChannel sendData:imgBuf];
 //}
 
--(void) connectPeer {
-    if ([self.userId_ length] == 0) {
-        NSLog(@"Could not connect to peer with empty user id.");
-        return;
-    }
-    self.channelOpened = NO;
-    self.pickController = nil;
-}
 @end
