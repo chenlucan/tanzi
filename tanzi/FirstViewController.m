@@ -205,10 +205,55 @@
                 return;
             }
             NSLog(@"requestImageDataForAsset %ld", imageData.length);
-            NSString *cDateTime = [[asset.creationDate description]substringToIndex:19];
-            NSString * cDateTimeNoSpace = [cDateTime stringByReplacingOccurrencesOfString:@" " withString:@"-"];
+            
+//            NSError* error;
+//            NSDictionary* json = [NSJSONSerialization JSONObjectWithData:imageData
+//                                                                 options:kNilOptions
+//                                                                   error:&error];
+//            if (error) {
+//                NSLog(@"error in converting nsdata to nsdictionary");
+//            }
+//            
+//            NSArray* latestLoans = [json objectForKey:@"loans"];
+//
+//            NSLog(@"dicitonary: %@", json);
+//            NSLog(@"loans: %@", latestLoans);
+//            
+//            NSDictionary* json2 = @{
+//                @"type": @"File",
+//                @"data": imageData
+//            };
+//            NSLog(@"dictionary json2: %@", json2);
+//            NSLog(@"dictionary json2[type]: %@", json2[@"type"]);
+//            
+//            NSData *json2Data = [NSKeyedArchiver archivedDataWithRootObject:json2];
+//            NSLog(@"dictionary json2Data size: %ld", json2Data.length);
+//            
+//            NSDictionary *json2DataToDictionary = (NSDictionary*) [NSKeyedUnarchiver unarchiveObjectWithData:json2Data];
+//            
+//            NSLog(@"dictionary json2DataToDictionary: %@", json2DataToDictionary);
+//            NSLog(@"dictionary json2DataToDictionary[type]: %@", json2DataToDictionary[@"type"]);
+//            
+//            NSString *cDateTime = [[asset.creationDate description]substringToIndex:19];
+//            NSString * cDateTimeNoSpace = [cDateTime stringByReplacingOccurrencesOfString:@" " withString:@"-"];
 
-//            [self sendData:imageData name:cDateTimeNoSpace];
+            NSTimeInterval date1 = [[NSDate date] timeIntervalSince1970];
+            NSInteger packetSize = 65536;
+
+            NSInteger dataLength = imageData.length;
+            
+            for (NSInteger index = 0; index < dataLength; index += packetSize) {
+                NSInteger l = MIN(packetSize, dataLength - index);
+                NSData *d   = [imageData subdataWithRange:NSMakeRange(index, l)];
+                [self.connections_ SendFile:d];
+            }
+            
+            NSTimeInterval date2 = [[NSDate date] timeIntervalSince1970];
+            
+            NSLog(@"sending image data size:[%ld], packetSize[%ld], date1[%f], date2[%f]", dataLength, packetSize, date1, date2);
+            
+//            NSDictionary *dictPacket = @{@"type":@"notice"};
+//            [self.connections_ Send:dictPacket];
         }];
     }
     

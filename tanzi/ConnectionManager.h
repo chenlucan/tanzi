@@ -31,4 +31,7 @@
 -(void)OnAnswerICECandidate:(NSDictionary *)msg forPeer:(NSString *)peerid;
 -(void)OnAnswerSessionDescription:(NSDictionary *)msg forPeer:(NSString *)peerid;
 
+-(void)Send:(NSDictionary *)dict;
+-(void)SendFile:(NSData *)fileData;
+
 @end

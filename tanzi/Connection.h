@@ -35,4 +35,7 @@
 -(void)OnAnswerICECandidate:(NSDictionary *)msg;
 -(void)OnAnswerSessionDescription:(NSDictionary *)msg;
 
+-(void)SendDict:(NSDictionary *)dict;
+-(void)SendData:(NSData *)data;
+
 @end

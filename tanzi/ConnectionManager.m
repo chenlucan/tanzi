@@ -70,6 +70,29 @@
     [conn OnAnswerSessionDescription:msg];
 }
 
+
+-(void)Send:(NSDictionary *)dict {
+    for (NSString *peerid in self.connections_) {
+        [self.connections_[peerid] SendDict:dict];
+    }
+}
+
+-(void)SendFile:(NSData *)fileData {
+    // (todo) no fragmentation yet!
+//    NSDictionary* dict = @{
+//                            @"type": @"File",
+//                            @"size": [NSNumber numberWithInteger:fileData.length],
+//                            @"data": fileData
+//                            };
+//    
+//    NSError *error;
+//    NSData *dictData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+    
+    for (NSString *peerid in self.connections_) {
+        [self.connections_[peerid] SendData:fileData];
+    }
+}
+
 #pragma mark - ConnectionDelegate
 -(void)OnConnectionOpened:(Connection*)connection {
     [self.delegate OnConnectionReady:[connection peerid]];
