@@ -10,7 +10,7 @@
 
 @protocol SignalingClientDelegate <NSObject>
 
--(void)OnMessage:(NSDictionary*)message;
+-(void)OnMessage:(NSDictionary*)message fromChannel:(NSString *)channelid;
 
 @end
 
@@ -18,6 +18,9 @@
 
 @property (nonatomic, weak) id <SignalingClientDelegate> delegate;
 
+-(void)setPublicChannel:(NSString *)publicChannel;
+-(void)subscribe:(NSString *)channelid;
 -(void)publish:(NSDictionary*)message to:(NSString *)channel;
+-(void)publishToPublicChannel:(NSDictionary*)message;
 
 @end

@@ -17,26 +17,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email to connect you devices" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nTL-sP-RE5">
-                                <rect key="frame" x="16" y="42" width="210" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0b-3b-Zlr">
+                                <rect key="frame" x="18" y="20" width="564" height="21"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="am8-cX-TVd">
-                                <rect key="frame" x="234" y="41" width="70" height="30"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="GEz-rx-VLI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1d-dE-e6j">
+                                <rect key="frame" x="19" y="469" width="562" height="34"/>
                                 <animations/>
-                                <state key="normal" title="Connect">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onConnect:" destination="5y4-15-pRw" eventType="touchUpInside" id="HRS-fl-pqa"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1d-dE-e6j">
-                                <rect key="frame" x="16" y="269" width="288" height="30"/>
-                                <animations/>
-                                <state key="normal" title="btnTitle">
+                                <state key="normal">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -44,25 +41,22 @@
                                     <action selector="onUpload:" destination="5y4-15-pRw" eventType="touchUpInside" id="pjp-WZ-Qr6"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ok" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0b-3b-Zlr">
-                                <rect key="frame" x="20" y="95" width="206" height="21"/>
-                                <animations/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" none="YES"/>
-                                </accessibility>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="e0b-3b-Zlr" firstAttribute="leading" secondItem="cb9-AP-r7J" secondAttribute="leadingMargin" constant="-2" id="91J-vZ-vEA"/>
+                            <constraint firstItem="e0b-3b-Zlr" firstAttribute="centerX" secondItem="cb9-AP-r7J" secondAttribute="centerX" id="IFK-rZ-UwS"/>
+                            <constraint firstItem="y1d-dE-e6j" firstAttribute="leading" secondItem="cb9-AP-r7J" secondAttribute="leadingMargin" constant="-1" id="PKh-xD-80X"/>
+                            <constraint firstItem="dSD-Uh-99U" firstAttribute="top" secondItem="y1d-dE-e6j" secondAttribute="bottom" constant="48" id="bnT-QM-keH"/>
+                            <constraint firstItem="y1d-dE-e6j" firstAttribute="centerX" secondItem="e0b-3b-Zlr" secondAttribute="centerX" id="jZA-2N-DBX"/>
+                            <constraint firstItem="e0b-3b-Zlr" firstAttribute="top" secondItem="696-AK-Wfk" secondAttribute="bottom" id="uUj-LH-PqO"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" systemItem="favorites" id="i4Q-UO-ygq"/>
                     <connections>
-                        <outlet property="btnConnect" destination="am8-cX-TVd" id="YIf-RG-4xJ"/>
+                        <outlet property="btnUpload" destination="y1d-dE-e6j" id="I7E-LN-3wp"/>
                         <outlet property="labelStatus" destination="e0b-3b-Zlr" id="v0x-CE-xXz"/>
-                        <outlet property="txtFieldEmail" destination="nTL-sP-RE5" id="fVA-7Y-Igi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DuT-f7-uYb" sceneMemberID="firstResponder"/>
@@ -89,7 +83,7 @@
                                     <constraint firstAttribute="width" constant="89" id="eqj-rN-pRp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNA-Hx-l7f">
@@ -135,7 +129,7 @@
                                             <constraint firstAttribute="width" constant="114" id="K7P-7b-7hB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5a-WN-dGs">
@@ -146,7 +140,7 @@
                                             <constraint firstAttribute="height" constant="21" id="8eq-xT-c2x"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="account-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="2eN-EL-Mc2">
