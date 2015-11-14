@@ -71,6 +71,7 @@
         chInit.protocol = @"sctp";
         self.dataChannel_ = [self.peerConnection_ createDataChannelWithLabel:self.otherPeerId_ config:chInit];
         self.dataChannel_.delegate = self;
+        
         [self.peerConnection_ createOfferWithDelegate:self constraints:nil];
         
         self.channelIsOpen_ = NO;
@@ -181,6 +182,20 @@
 //        }
 //        [self.messageQueue removeAllObjects];
     }
+}
+
+
+-(void)SendDict:(NSDictionary *)dict {
+    NSError *error;
+    NSData *dictData2 = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+    
+    RTCDataBuffer * buffer3 = [[RTCDataBuffer alloc] initWithData:dictData2 isBinary:NO];
+    [self.dataChannel_ sendData:buffer3];
+}
+
+-(void)SendData:(NSData *)data {
+    RTCDataBuffer * buffer = [[RTCDataBuffer alloc] initWithData:data isBinary:YES];
+    [self.dataChannel_ sendData:buffer];
 }
 
 #pragma mark - RTCPeerConnectionDelegate

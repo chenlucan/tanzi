@@ -205,10 +205,20 @@
                 return;
             }
             NSLog(@"requestImageDataForAsset %ld", imageData.length);
-            NSString *cDateTime = [[asset.creationDate description]substringToIndex:19];
-            NSString * cDateTimeNoSpace = [cDateTime stringByReplacingOccurrencesOfString:@" " withString:@"-"];
 
-//            [self sendData:imageData name:cDateTimeNoSpace];
+            NSTimeInterval date1 = [[NSDate date] timeIntervalSince1970];
+            NSInteger packetSize = 65536/2;
+
+            NSInteger dataLength = imageData.length;
+            
+            for (NSInteger index = 0; index < dataLength; index += packetSize) {
+                NSInteger l = MIN(packetSize, dataLength - index);
+                NSData *d   = [imageData subdataWithRange:NSMakeRange(index, l)];
+                [self.connections_ SendFile:d ToPeer:@""];
+            }
+            
+            NSTimeInterval date2 = [[NSDate date] timeIntervalSince1970];
+            NSLog(@"sending image data size:[%ld], packetSize[%ld], date1[%f], date2[%f]", dataLength, packetSize, date1, date2);
         }];
     }
     

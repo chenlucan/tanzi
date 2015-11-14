@@ -70,6 +70,19 @@
     [conn OnAnswerSessionDescription:msg];
 }
 
+
+-(void)SendDict:(NSDictionary *)dict ToPeer:(NSString*)peerId {
+    for (NSString *peerid in self.connections_) {
+        [self.connections_[peerid] SendDict:dict];
+    }
+}
+
+-(void)SendFile:(NSData *)fileData ToPeer:(NSString*)peerId {
+    for (NSString *peerid in self.connections_) {
+        [self.connections_[peerid] SendData:fileData];
+    }
+}
+
 #pragma mark - ConnectionDelegate
 -(void)OnConnectionOpened:(Connection*)connection {
     [self.delegate OnConnectionReady:[connection peerid]];
