@@ -70,6 +70,11 @@
     [conn OnAnswerSessionDescription:msg];
 }
 
+-(void)SendString:(NSString *)str ToPeer:(NSString*)peerId {
+    for (NSString *peerid in self.connections_) {
+        [self.connections_[peerid] SendString:str];
+    }
+}
 
 -(void)SendDict:(NSDictionary *)dict ToPeer:(NSString*)peerId {
     for (NSString *peerid in self.connections_) {

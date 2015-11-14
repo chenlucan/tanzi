@@ -184,6 +184,12 @@
     }
 }
 
+-(void)SendString:(NSString *)str {
+    NSData* data = [str dataUsingEncoding:NSUTF8StringEncoding];
+
+    RTCDataBuffer * buffer3 = [[RTCDataBuffer alloc] initWithData:data isBinary:NO];
+    [self.dataChannel_ sendData:buffer3];
+}
 
 -(void)SendDict:(NSDictionary *)dict {
     NSError *error;
@@ -196,6 +202,7 @@
 -(void)SendData:(NSData *)data {
     RTCDataBuffer * buffer = [[RTCDataBuffer alloc] initWithData:data isBinary:YES];
     [self.dataChannel_ sendData:buffer];
+    NSLog(@"sending binary data.");
 }
 
 #pragma mark - RTCPeerConnectionDelegate
@@ -386,6 +393,23 @@ didSetSessionDescriptionWithError:(NSError *)error {
 
 // Called when a data buffer was successfully received.
 - (void)channel:(RTCDataChannel*)channel
-didReceiveMessageWithBuffer:(RTCDataBuffer*)buffer{}
+didReceiveMessageWithBuffer:(RTCDataBuffer*)buffer {
+    if (buffer.isBinary) {
+        NSLog(@"Binary data received: [%ld]", [buffer.data length]);
+    } else {
+        NSLog(@"None-Binary data received: [%ld]", [buffer.data length]);
+        NSError* error;
+        NSDictionary* json = [NSJSONSerialization JSONObjectWithData:buffer.data
+                                                             options:kNilOptions
+                                                               error:&error];
+
+        if (error) {
+            NSString* newStr = [[NSString alloc] initWithData:buffer.data encoding:NSUTF8StringEncoding];
+            NSLog(@"Error in converting data to dictionary, assuing its string:%@", newStr);
+        } else {
+            NSLog(@"Received json: %@", json);
+        }
+    }
+}
 
 @end

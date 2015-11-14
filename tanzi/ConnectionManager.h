@@ -31,6 +31,7 @@
 -(void)OnAnswerICECandidate:(NSDictionary *)msg forPeer:(NSString *)peerid;
 -(void)OnAnswerSessionDescription:(NSDictionary *)msg forPeer:(NSString *)peerid;
 
+-(void)SendString:(NSString *)str ToPeer:(NSString*)peerId;
 -(void)SendDict:(NSDictionary *)dict ToPeer:(NSString*)peerId;
 -(void)SendFile:(NSData *)fileData ToPeer:(NSString*)peerId;
 

@@ -214,8 +214,15 @@
             for (NSInteger index = 0; index < dataLength; index += packetSize) {
                 NSInteger l = MIN(packetSize, dataLength - index);
                 NSData *d   = [imageData subdataWithRange:NSMakeRange(index, l)];
-                [self.connections_ SendFile:d ToPeer:@""];
+//                [self.connections_ SendFile:d ToPeer:@""];
             }
+            
+            NSMutableData* theData = [[NSMutableData alloc] initWithLength:6000];
+            NSDictionary*  theDict = @{@"type":@"test"};
+            NSString*      theStr  = @"Hi team";
+            [self.connections_ SendFile:theData ToPeer:@""];
+            [self.connections_ SendDict:theDict ToPeer:@""];
+            [self.connections_ SendString:theStr ToPeer:@""];
             
             NSTimeInterval date2 = [[NSDate date] timeIntervalSince1970];
             NSLog(@"sending image data size:[%ld], packetSize[%ld], date1[%f], date2[%f]", dataLength, packetSize, date1, date2);
