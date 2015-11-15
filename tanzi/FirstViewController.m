@@ -205,27 +205,38 @@
                 return;
             }
             NSLog(@"requestImageDataForAsset %ld", imageData.length);
+            NSString *cDateTime = [[asset.creationDate description]substringToIndex:19];
+            NSString *cDateTimeNoSpace = [cDateTime stringByReplacingOccurrencesOfString:@" " withString:@"-"];
+            NSMutableString *fileName = [[NSMutableString alloc] initWithString:cDateTimeNoSpace];
+            [fileName appendString:@"-"];
+            [fileName appendString:[MsgFormatter RandStr4Digits]];
+            [fileName appendString:@".png"];
+            
+            NSLog(@"sending file name[%@], size[%ld]",fileName, [imageData length]);
+            
+            [self.connections_ SendFile:imageData ToPeer:@"" Name:fileName];
 
-            NSTimeInterval date1 = [[NSDate date] timeIntervalSince1970];
-            NSInteger packetSize = 65536/2;
 
-            NSInteger dataLength = imageData.length;
-            
-            for (NSInteger index = 0; index < dataLength; index += packetSize) {
-                NSInteger l = MIN(packetSize, dataLength - index);
-                NSData *d   = [imageData subdataWithRange:NSMakeRange(index, l)];
-//                [self.connections_ SendFile:d ToPeer:@""];
-            }
-            
-            NSMutableData* theData = [[NSMutableData alloc] initWithLength:6000];
-            NSDictionary*  theDict = @{@"type":@"test"};
-            NSString*      theStr  = @"Hi team";
-            [self.connections_ SendFile:theData ToPeer:@""];
-            [self.connections_ SendDict:theDict ToPeer:@""];
-            [self.connections_ SendString:theStr ToPeer:@""];
-            
-            NSTimeInterval date2 = [[NSDate date] timeIntervalSince1970];
-            NSLog(@"sending image data size:[%ld], packetSize[%ld], date1[%f], date2[%f]", dataLength, packetSize, date1, date2);
+//            NSTimeInterval date1 = [[NSDate date] timeIntervalSince1970];
+//            NSInteger packetSize = 65536/2;
+//
+//            NSInteger dataLength = imageData.length;
+//            
+//            for (NSInteger index = 0; index < dataLength; index += packetSize) {
+//                NSInteger l = MIN(packetSize, dataLength - index);
+//                NSData *d   = [imageData subdataWithRange:NSMakeRange(index, l)];
+////                [self.connections_ SendFile:d ToPeer:@""];
+//            }
+//            
+//            NSMutableData* theData = [[NSMutableData alloc] initWithLength:6000];
+//            NSDictionary*  theDict = @{@"type":@"test"};
+//            NSString*      theStr  = @"Hi team";
+//            [self.connections_ SendFile:theData ToPeer:@""];
+//            [self.connections_ SendDict:theDict ToPeer:@""];
+//            [self.connections_ SendString:theStr ToPeer:@""];
+//            
+//            NSTimeInterval date2 = [[NSDate date] timeIntervalSince1970];
+//            NSLog(@"sending image data size:[%ld], packetSize[%ld], date1[%f], date2[%f]", dataLength, packetSize, date1, date2);
         }];
     }
     

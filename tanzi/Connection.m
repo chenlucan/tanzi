@@ -21,6 +21,57 @@
 #import <WebRTC/RTCSessionDescription.h>
 #import <WebRTC/RTCSessionDescriptionDelegate.h>
 
+
+@interface MessageHandler : NSObject
+@property (nonatomic) NSInteger MaxPacketSize;
+@property (nonatomic) NSInteger seqNo_;
+@property (nonatomic, weak) RTCDataChannel *channel_;
+@end
+
+@implementation MessageHandler
+
+-(instancetype)init {
+    self = [super init];
+    if (self) {
+        self.MaxPacketSize = 65536;
+        self.seqNo_ = 1;
+    }
+    return self;
+}
+
+-(void)SetDataChannel:(RTCDataChannel*)channel {
+    self.channel_ = channel;
+}
+
+-(void)SendFile:(NSData *)data Name:(NSString*)name {
+    NSInteger size = [data length];
+    NSInteger numOfPackets = (size / self.MaxPacketSize);
+    if (size % self.MaxPacketSize > 0) {
+        numOfPackets += 1;
+    }
+    NSDictionary *fileMeta = @{
+                               @"Type":@1,
+                               @"Name":name,
+                               @"Size":@(size),
+                               @"NumOfPackets":@(numOfPackets),
+                               };
+    NSError *error;
+    NSData *dictData = [NSJSONSerialization dataWithJSONObject:fileMeta options:0 error:&error];
+    
+    RTCDataBuffer * buffer = [[RTCDataBuffer alloc] initWithData:dictData isBinary:NO];
+    [self.channel_ sendData:buffer];
+    
+    for (NSInteger dataOffset = 0; dataOffset < size; dataOffset = dataOffset + self.MaxPacketSize) {
+        NSData * subdata = [data subdataWithRange:NSMakeRange(dataOffset, MIN(size - dataOffset, self.MaxPacketSize))];
+        RTCDataBuffer * subbuffer = [[RTCDataBuffer alloc] initWithData:subdata isBinary:YES];
+        [self.channel_ sendData:subbuffer];
+    }
+    
+    self.seqNo_ += 1;
+};
+
+@end
+
 @interface Connection() <RTCPeerConnectionDelegate, RTCSessionDescriptionDelegate, RTCDataChannelDelegate>
 
 @property(nonatomic, weak)   SignalingClient *signaling_;
@@ -31,6 +82,7 @@
 @property(nonatomic, strong) RTCPeerConnectionFactory *factory_;
 @property(nonatomic, strong) RTCPeerConnection *peerConnection_;
 @property(nonatomic, strong) RTCDataChannel *dataChannel_;
+@property(nonatomic, strong) MessageHandler *msgHandler_;
 
 @property(nonatomic) BOOL channelIsOpen_;
 
@@ -71,6 +123,7 @@
         chInit.protocol = @"sctp";
         self.dataChannel_ = [self.peerConnection_ createDataChannelWithLabel:self.otherPeerId_ config:chInit];
         self.dataChannel_.delegate = self;
+        self.msgHandler_ = [[MessageHandler alloc] init];
         
         [self.peerConnection_ createOfferWithDelegate:self constraints:nil];
         
@@ -199,10 +252,9 @@
     [self.dataChannel_ sendData:buffer3];
 }
 
--(void)SendData:(NSData *)data {
-    RTCDataBuffer * buffer = [[RTCDataBuffer alloc] initWithData:data isBinary:YES];
-    [self.dataChannel_ sendData:buffer];
+-(void)SendFile:(NSData *)data Name:(NSString*)name {
     NSLog(@"sending binary data.");
+    [self.msgHandler_ SendFile:data Name:name];
 }
 
 #pragma mark - RTCPeerConnectionDelegate
@@ -376,6 +428,7 @@ didSetSessionDescriptionWithError:(NSError *)error {
             break;
         case kRTCDataChannelStateOpen:
             NSLog(@"channelDidChangeState open");
+            [self.msgHandler_ setChannel_:self.dataChannel_];
             break;
         case kRTCDataChannelStateClosing:
             NSLog(@"channelDidChangeState closing");

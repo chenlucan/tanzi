@@ -37,8 +37,6 @@
 
 -(void)SendString:(NSString *)str;
 -(void)SendDict:(NSDictionary *)dict;
--(void)SendData:(NSData *)data;
-
--(void)SendFile:(NSData*)data Name:(NSString*)name Type:(NSString*)type Size:(NSString*)size;
+-(void)SendFile:(NSData *)data Name:(NSString*)name;
 
 @end

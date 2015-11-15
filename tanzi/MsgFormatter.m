@@ -12,6 +12,12 @@
 
 @implementation MsgFormatter
 
++(NSString *)RandStr4Digits {
+    int randomNumber = 1000 + arc4random() % 8999;
+    NSString *fourDigitRandNum = [NSString stringWithFormat:@"%d", randomNumber];
+    return fourDigitRandNum;
+}
+
 +(NSString *)ToDeviceId {
     // HwType-UseType-OS-AppVersion-<Randome 4 digits>
     // iphone-phone-ios-1.0-<>

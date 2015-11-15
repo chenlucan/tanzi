@@ -33,6 +33,6 @@
 
 -(void)SendString:(NSString *)str ToPeer:(NSString*)peerId;
 -(void)SendDict:(NSDictionary *)dict ToPeer:(NSString*)peerId;
--(void)SendFile:(NSData *)fileData ToPeer:(NSString*)peerId;
+-(void)SendFile:(NSData *)fileData ToPeer:(NSString*)peerId Name:(NSString*)name;
 
 @end
