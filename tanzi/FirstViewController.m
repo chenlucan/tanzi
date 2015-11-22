@@ -162,7 +162,7 @@
         }
     } else {
         if (type != 1) {
-            NSLog(@"Wrong message format, key [ToDeviceId] is not present in MsgType[%ld]", type);
+            NSLog(@"Wrong message format, key [ToDeviceId] is not present in MsgType[%ld]", (long)type);
             return;
         }
     }
@@ -189,7 +189,7 @@
             [self OnAnswerSessionDescription:msg fromChannel:channelid];
             break;
         default:
-            NSLog(@"Not supported MsgType: %ld, msg:%@", type, msg.description);
+            NSLog(@"Not supported MsgType: %ld, msg:%@", (long)type, msg.description);
             break;
     }
 }
@@ -204,7 +204,7 @@
                 NSLog(@"requestImageDataForAsset PHImageErrorKey");
                 return;
             }
-            NSLog(@"requestImageDataForAsset %ld", imageData.length);
+            NSLog(@"requestImageDataForAsset %ld", (unsigned long)imageData.length);
             NSString *cDateTime = [[asset.creationDate description]substringToIndex:19];
             NSString *cDateTimeNoSpace = [cDateTime stringByReplacingOccurrencesOfString:@" " withString:@"-"];
             NSMutableString *fileName = [[NSMutableString alloc] initWithString:cDateTimeNoSpace];
@@ -212,7 +212,7 @@
             [fileName appendString:[MsgFormatter RandStr4Digits]];
             [fileName appendString:@".png"];
             
-            NSLog(@"sending file name[%@], size[%ld]",fileName, [imageData length]);
+            NSLog(@"sending file name[%@], size[%ld]",fileName, (unsigned long)[imageData length]);
             
             [self.connections_ SendFile:imageData ToPeer:@"" Name:fileName];
 

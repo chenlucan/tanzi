@@ -156,7 +156,7 @@
     
     NSInteger msgType = [[msg objectForKey:@"MsgType"] integerValue];
     if (msgType != 4) {
-        NSLog(@"Wrong MsgType[%ld] received", msgType);
+        NSLog(@"Wrong MsgType[%ld] received", (long)msgType);
         return;
     }
     
@@ -179,7 +179,7 @@
         NSString *sdp = cand[@"candidate"];
         NSNumber *num = cand[@"sdpMLineIndex"];
         NSInteger mLineIndex = [num integerValue];
-        NSLog(@"Added ice candidate mid[%@], mLineIndex[%ld], sdp[%@]", mid, mLineIndex, sdp);
+        NSLog(@"Added ice candidate mid[%@], mLineIndex[%ld], sdp[%@]", mid, (long)mLineIndex, sdp);
         RTCICECandidate *candidate = [[RTCICECandidate alloc] initWithMid:mid index:mLineIndex sdp:sdp];
         [self.peerConnection_ addICECandidate:candidate];
     }
@@ -193,7 +193,7 @@
     
     NSInteger msgType = [[msg objectForKey:@"MsgType"] integerValue];
     if (msgType != 5) {
-        NSLog(@"Wrong MsgType[%ld] received", msgType);
+        NSLog(@"Wrong MsgType[%ld] received", (long)msgType);
         return;
     }
     
@@ -216,7 +216,7 @@
                                                              options:NSJSONReadingMutableContainers
                                                                error:&jsonError];
         if (jsonError) {
-            NSLog(@"data to dict error, code: %ld", jsonError.code);
+            NSLog(@"data to dict error, code: %ld", (long)jsonError.code);
             return;
         } else {
             NSLog(@"data to dict success, json[type]: %@", sdpJson[@"type"]);
@@ -448,9 +448,9 @@ didSetSessionDescriptionWithError:(NSError *)error {
 - (void)channel:(RTCDataChannel*)channel
 didReceiveMessageWithBuffer:(RTCDataBuffer*)buffer {
     if (buffer.isBinary) {
-        NSLog(@"Binary data received: [%ld]", [buffer.data length]);
+        NSLog(@"Binary data received: [%ld]", (unsigned long)[buffer.data length]);
     } else {
-        NSLog(@"None-Binary data received: [%ld]", [buffer.data length]);
+        NSLog(@"None-Binary data received: [%ld]", (unsigned long)[buffer.data length]);
         NSError* error;
         NSDictionary* json = [NSJSONSerialization JSONObjectWithData:buffer.data
                                                              options:kNilOptions
