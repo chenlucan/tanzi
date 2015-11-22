@@ -56,7 +56,7 @@
 		5145C5091BC9E81C008C2638 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		5145C50A1BC9E81C008C2638 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		515438651BEA4D0400EDDEEF /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		517EDA7C1BC7B6D700273C27 /* tanzi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tanzi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		517EDA7C1BC7B6D700273C27 /* PCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		517EDA801BC7B6D700273C27 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		517EDA821BC7B6D700273C27 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		517EDA831BC7B6D700273C27 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 		517EDA7D1BC7B6D700273C27 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				517EDA7C1BC7B6D700273C27 /* tanzi.app */,
+				517EDA7C1BC7B6D700273C27 /* PCloud.app */,
 				517EDA951BC7B6D700273C27 /* tanziTests.xctest */,
 				517EDAA01BC7B6D700273C27 /* tanziUITests.xctest */,
 			);
@@ -229,9 +229,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		517EDA7B1BC7B6D700273C27 /* tanzi */ = {
+		517EDA7B1BC7B6D700273C27 /* PCloud */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 517EDAA91BC7B6D700273C27 /* Build configuration list for PBXNativeTarget "tanzi" */;
+			buildConfigurationList = 517EDAA91BC7B6D700273C27 /* Build configuration list for PBXNativeTarget "PCloud" */;
 			buildPhases = (
 				6F1D37F1AB24CB2D612EEEE4 /* Check Pods Manifest.lock */,
 				517EDA781BC7B6D700273C27 /* Sources */,
@@ -243,9 +243,9 @@
 			);
 			dependencies = (
 			);
-			name = tanzi;
+			name = PCloud;
 			productName = tanzi;
-			productReference = 517EDA7C1BC7B6D700273C27 /* tanzi.app */;
+			productReference = 517EDA7C1BC7B6D700273C27 /* PCloud.app */;
 			productType = "com.apple.product-type.application";
 		};
 		517EDA941BC7B6D700273C27 /* tanziTests */ = {
@@ -320,7 +320,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				517EDA7B1BC7B6D700273C27 /* tanzi */,
+				517EDA7B1BC7B6D700273C27 /* PCloud */,
 				517EDA941BC7B6D700273C27 /* tanziTests */,
 				517EDA9F1BC7B6D700273C27 /* tanziUITests */,
 			);
@@ -431,12 +431,12 @@
 /* Begin PBXTargetDependency section */
 		517EDA971BC7B6D700273C27 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 517EDA7B1BC7B6D700273C27 /* tanzi */;
+			target = 517EDA7B1BC7B6D700273C27 /* PCloud */;
 			targetProxy = 517EDA961BC7B6D700273C27 /* PBXContainerItemProxy */;
 		};
 		517EDAA21BC7B6D700273C27 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 517EDA7B1BC7B6D700273C27 /* tanzi */;
+			target = 517EDA7B1BC7B6D700273C27 /* PCloud */;
 			targetProxy = 517EDAA11BC7B6D700273C27 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -627,7 +627,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		517EDAA91BC7B6D700273C27 /* Build configuration list for PBXNativeTarget "tanzi" */ = {
+		517EDAA91BC7B6D700273C27 /* Build configuration list for PBXNativeTarget "PCloud" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				517EDAAA1BC7B6D700273C27 /* Debug */,
