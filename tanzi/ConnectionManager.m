@@ -82,9 +82,9 @@
     }
 }
 
--(void)SendFile:(NSData *)fileData ToPeer:(NSString*)peerId {
+-(void)SendFile:(NSData *)fileData ToPeer:(NSString*)peerId Name:(NSString*)name {
     for (NSString *peerid in self.connections_) {
-        [self.connections_[peerid] SendData:fileData];
+        [self.connections_[peerid] SendFile:fileData Name:name];
     }
 }
 

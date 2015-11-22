@@ -10,6 +10,8 @@
 
 @interface MsgFormatter : NSObject
 
++(NSString *)RandStr4Digits;
+    
 +(NSString *)ToDeviceId;
 
 +(NSDictionary *)ToHeartbeat:(NSString *)deviceid;
