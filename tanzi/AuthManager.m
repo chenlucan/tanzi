@@ -71,18 +71,18 @@ static AuthManager *instance;
     if (!self.fbLoginMgr_) {
         self.fbLoginMgr_ = [[FBSDKLoginManager alloc] init];
     }
-
+    [self.fbLoginMgr_ logOut]; // http://stackoverflow.com/questions/29408299/ios-facebook-sdk-4-0-login-error-code-304
     [self.fbLoginMgr_ logInWithReadPermissions:@[@"public_profile"]
                  fromViewController:nil
                             handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
         if (error) {
-             NSLog(@"Process error");
+             NSLog(@"Process error: %@", error.description);
              [self.delegate authenticationFailed];
          } else if (result.isCancelled) {
              NSLog(@"Cancelled");
              [self.delegate authenticationFailed];
          } else {
-             NSLog(@"Logged in");
+             NSLog(@"Logged in, userID[%@]", result.token.userID);
              if (result.token.userID) {
                  [self.delegate authenticationSuccessWithUserId:result.token.userID WithUsername:result.token.userID];
              }
@@ -100,6 +100,7 @@ static AuthManager *instance;
     if (!self.fbLoginMgr_) {
         self.fbLoginMgr_ = [[FBSDKLoginManager alloc] init];
         [self.fbLoginMgr_ logOut];
+        [FBSDKAccessToken setCurrentAccessToken:nil];
         NSLog(@"Creating FBLoginManager before logging out");
     }
 
