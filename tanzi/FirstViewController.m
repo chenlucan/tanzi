@@ -33,6 +33,7 @@
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
+    NSLog(@"New object of FirstViewController");
     self = [super initWithCoder:decoder];
     if (self) {
         [self SetNotConnectedState];
@@ -45,6 +46,11 @@
         self.selfDeviceId_ = [MsgFormatter ToDeviceId];
     }
     return self;
+}
+
+-(void)dealloc {
+    self.connections_ = nil;
+    NSLog(@"FirstViewController deallocated");
 }
 
 -(void)setUserId:(NSString *)uid {

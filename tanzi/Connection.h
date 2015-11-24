@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import <WebRTC/RTCPeerConnectionFactory.h>
+
 #include "SignalingClient.h"
 
 @class Connection;
@@ -26,6 +28,7 @@
 @property(nonatomic, weak) id <ConnectionDelegate> delegate;
 
 -(instancetype)initWithSignaling:(SignalingClient *)client
+            RTCConnectionFactory:(RTCPeerConnectionFactory *)factory
                      OtherPeerId:(NSString *)otherPeerid
                       selfPeerId:(NSString *)selfPeerId
                        ChannelId:(NSString *)channelId;

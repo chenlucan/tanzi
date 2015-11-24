@@ -8,10 +8,13 @@
 
 #import "ConnectionManager.h"
 
-#include "Connection.h"
+#import <WebRTC/RTCPeerConnectionFactory.h>
+
+#import "Connection.h"
 
 @interface ConnectionManager() <ConnectionDelegate>
 @property(nonatomic, weak)   SignalingClient    *signaling_;
+@property(nonatomic, strong) RTCPeerConnectionFactory *factory_;
 @property(nonatomic, strong) NSMutableDictionary<NSString*, Connection*> *connections_;
 
 @end
@@ -22,9 +25,18 @@
     self = [super init];
     if (self) {
         self.signaling_    = client;
+        [RTCPeerConnectionFactory initializeSSL];
+        self.factory_ = [[RTCPeerConnectionFactory alloc] init];
         self.connections_  = [[NSMutableDictionary alloc] init];
     }
     return self;
+}
+
+-(void)dealloc {
+    [self.connections_ removeAllObjects];
+    self.factory_ = nil;
+    [RTCPeerConnectionFactory deinitializeSSL];
+    NSLog(@"ConnectionManager deallocated");
 }
 
 -(BOOL)AddConnection:(NSString *)otherPeerId
@@ -43,6 +55,7 @@
         return NO;
     }
     Connection* conn = [[Connection alloc] initWithSignaling:self.signaling_
+                                        RTCConnectionFactory:self.factory_
                                                  OtherPeerId:otherPeerId
                                                   selfPeerId:selfPeerId
                                                    ChannelId:channelId];
@@ -94,18 +107,18 @@
 }
 
 -(void)OnConnectionClosed:(Connection*)connection {
-    [self.delegate OnNotConnectionReady:[connection peerid]];
-    
+    NSString *conn_id = [connection peerid];
+    [self.delegate OnNotConnectionReady:conn_id];
     // deleting Connection crashes app
     // (todo) find a way to delete closed Connection
     
-//    dispatch_async(dispatch_get_main_queue(), ^(void) {
-//        // its called from Connection
-//        // because we need delete this Connection,
-//        // we have to enqueue into main queue
-//        // otherwise this call will return back to deallocated Connection object
-//        [self.connections_ removeObjectForKey:[connection peerid]];
-//        NSLog(@"Removed connection with id[%@]", [connection peerid]);
-//    });
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        // its called from Connection
+        // because we need delete this Connection,
+        // we have to enqueue into main queue
+        // otherwise this call will return back to deallocated Connection object
+        [self.connections_ removeObjectForKey:conn_id];
+        NSLog(@"Removed connection with id[%@]", conn_id);
+    });
 }
 @end

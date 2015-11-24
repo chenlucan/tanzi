@@ -14,7 +14,6 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface AppDelegate () <AuthManagerDelegate>
-@property (nonatomic, strong) UIViewController* mainWindowHolder_;
 @end
 
 @implementation AppDelegate
@@ -72,13 +71,8 @@
 
 #pragma mark - AuthManagerDelegate
 - (void)authenticationSuccessWithUserId:(NSString *)userid WithUsername:(NSString *)username {
-    if (self.mainWindowHolder_) {
-        self.window.rootViewController = self.mainWindowHolder_;
-    } else {
-        self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
-        self.mainWindowHolder_ = self.window.rootViewController;
-    }
-
+    self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+    
     if ([userid length] != 0) {
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             NSLog(@"user[%@] is authenticated successfully", userid);
@@ -94,7 +88,7 @@
     }
 }
 - (void)authenticationFailed {
-    self.mainWindowHolder_ = self.window.rootViewController;
+    self.window.rootViewController = nil;
     
     UIViewController* rootController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginViewController"];
     UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:rootController];

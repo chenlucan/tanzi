@@ -17,7 +17,6 @@
 #import <WebRTC/RTCPair.h>
 #import <WebRTC/RTCPeerConnection.h>
 #import <WebRTC/RTCPeerConnectionDelegate.h>
-#import <WebRTC/RTCPeerConnectionFactory.h>
 #import <WebRTC/RTCSessionDescription.h>
 #import <WebRTC/RTCSessionDescriptionDelegate.h>
 
@@ -79,7 +78,7 @@
 @property(nonatomic, strong) NSString *selfPeerId_;
 @property(nonatomic, strong) NSString *channelId_;
 
-@property(nonatomic, strong) RTCPeerConnectionFactory *factory_;
+@property(nonatomic, weak) RTCPeerConnectionFactory *factory_;
 @property(nonatomic, strong) RTCPeerConnection *peerConnection_;
 @property(nonatomic, strong) RTCDataChannel *dataChannel_;
 @property(nonatomic, strong) MessageHandler *msgHandler_;
@@ -93,6 +92,7 @@
 
 @implementation Connection
 -(instancetype)initWithSignaling:(SignalingClient *)client
+            RTCConnectionFactory:(RTCPeerConnectionFactory *)factory
                      OtherPeerId:(NSString *)otherPeerId
                       selfPeerId:(NSString *)selfPeerId
                        ChannelId:(NSString *)channelId {
@@ -103,7 +103,7 @@
         self.selfPeerId_  = selfPeerId;
         self.channelId_   = channelId;
 
-        self.factory_ = [[RTCPeerConnectionFactory alloc] init];
+        self.factory_ = factory;
         // valid STUN/TURN servers.
         // NSURL *url2 = [NSURL URLWithString:@"turn:turn.bistri.com:80"];
         // NSURL *url3 = [NSURL URLWithString:@"turn:turn.anyfirewall.com:443?transport=tcp"];
@@ -113,8 +113,8 @@
         // RTCICEServer *server4 = [[RTCICEServer alloc] initWithURI:url4 username:@"" password:@""];
         NSURL *url1 = [NSURL URLWithString:@"stun:stun.l.google.com:19302"];
         RTCICEServer *server1 = [[RTCICEServer alloc] initWithURI:url1 username:@"" password:@""];
-        NSArray *ice_servers = @[server1];
-        self.peerConnection_ = [self.factory_ peerConnectionWithICEServers:ice_servers constraints:nil delegate:self];
+        NSArray *ice_servers  = @[server1];
+        self.peerConnection_  = [self.factory_ peerConnectionWithICEServers:ice_servers constraints:nil delegate:self];
         
         // createDataChannel
         RTCDataChannelInit *chInit = [[RTCDataChannelInit alloc] init];
@@ -137,7 +137,7 @@
 -(void)dealloc {
     [self.dataChannel_ close];
     [self.peerConnection_ close];
-    NSLog(@"deallocated id[%@]", self.otherPeerId_);
+    NSLog(@"Connection deallocated id[%@]", self.otherPeerId_);
 }
 
 -(NSString *)peerid {
