@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @protocol AuthManagerDelegate <NSObject>
-- (void)authenticationSuccessWithUserId:(NSString *)userid WithUsername:(NSString *)username;
+- (void)authenticationSuccessWithUserId:(NSString *)userid;
+- (void)authenticationSuccessWithUsername:(NSString *)username;
 - (void)authenticationFailed;
 @end
 

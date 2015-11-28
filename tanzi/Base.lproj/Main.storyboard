@@ -132,17 +132,6 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5a-WN-dGs">
-                                        <rect key="frame" x="276" y="156" width="48" height="21"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="48" id="17U-Hf-zDo"/>
-                                            <constraint firstAttribute="height" constant="21" id="8eq-xT-c2x"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="account-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="2eN-EL-Mc2">
                                         <rect key="frame" x="229" y="8" width="142" height="140"/>
                                         <animations/>
@@ -150,6 +139,17 @@
                                             <constraint firstAttribute="width" constant="142" id="eA0-PI-WFT"/>
                                         </constraints>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5a-WN-dGs">
+                                        <rect key="frame" x="8" y="156" width="584" height="21"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="584" id="17U-Hf-zDo"/>
+                                            <constraint firstAttribute="height" constant="21" id="8eq-xT-c2x"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -211,6 +211,9 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="g85-O1-LcO"/>
+                    <connections>
+                        <outlet property="labelName_" destination="D5a-WN-dGs" id="b5j-Ba-sgp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S9h-HY-JgO" sceneMemberID="firstResponder"/>
             </objects>

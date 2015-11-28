@@ -60,7 +60,8 @@ static AuthManager *instance;
     if ([FBSDKAccessToken currentAccessToken]) {
         self.UserId_ = [FBSDKAccessToken currentAccessToken].userID;
         self.source_ = LoginSource_FB;
-        [self.delegate authenticationSuccessWithUserId:[FBSDKAccessToken currentAccessToken].userID  WithUsername:[FBSDKAccessToken currentAccessToken].userID];
+        [self.delegate authenticationSuccessWithUserId:[FBSDKAccessToken currentAccessToken].userID];
+        [self RequestUsername];
     } else {
         [self.delegate authenticationFailed];
     }
@@ -84,10 +85,34 @@ static AuthManager *instance;
          } else {
              NSLog(@"Logged in, userID[%@]", result.token.userID);
              if (result.token.userID) {
-                 [self.delegate authenticationSuccessWithUserId:result.token.userID WithUsername:result.token.userID];
+                 [self.delegate authenticationSuccessWithUserId:result.token.userID];
+                 [self RequestUsername];
              }
          }
      }];
+}
+
+-(void) RequestUsername {
+    // For more complex open graph stories, use `FBSDKShareAPI`
+    // with `FBSDKShareOpenGraphContent`
+    /* make the API call */
+    FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
+                                  initWithGraphPath:@"me"
+                                  parameters:nil
+                                  HTTPMethod:@"GET"];
+    [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
+                                          id result,
+                                          NSError *error) {
+        if (result) {
+            NSDictionary* r = (NSDictionary*)result;
+            if (r && [r objectForKey:@"name"]) {
+                NSString *name = r[@"name"];
+                if ([name length] > 0) {
+                    [self.delegate authenticationSuccessWithUsername:name];
+                }
+            }
+        }
+    }];
 }
 
 -(void) LoginWithNative:(NSString *)username WithPassword:(NSString *)password {

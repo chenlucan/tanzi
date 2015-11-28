@@ -10,6 +10,7 @@
 
 @interface SecondViewController : UIViewController
 
+- (void)setUserName:(NSString *)name;
 
 @end
 

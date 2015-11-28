@@ -10,6 +10,7 @@
 #import "AuthManager.h"
 #import "KeychainItemWrapper.h"
 #import "FirstViewController.h"
+#import "SecondViewController.h"
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
@@ -70,10 +71,10 @@
 }
 
 #pragma mark - AuthManagerDelegate
-- (void)authenticationSuccessWithUserId:(NSString *)userid WithUsername:(NSString *)username {
+- (void)authenticationSuccessWithUserId:(NSString *)userid {
     self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
     
-    if ([userid length] != 0) {
+    if ([userid length] > 0) {
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             NSLog(@"user[%@] is authenticated successfully", userid);
             UITabBarController* tbc = (UITabBarController*)self.window.rootViewController;
@@ -87,6 +88,25 @@
         });
     }
 }
+
+- (void)authenticationSuccessWithUsername:(NSString *)username {
+    if ([username length] > 0) {
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            NSLog(@"user name[%@] is authenticated successfully", username);
+            if ([self.window.rootViewController isKindOfClass:[UITabBarController class]]) {
+                UITabBarController* tbc = (UITabBarController*)self.window.rootViewController;
+                for (UIViewController *v in tbc.viewControllers)
+                {
+                    if ([v isKindOfClass:[SecondViewController class]]) {
+                        SecondViewController* sv = (SecondViewController *)v;
+                        [sv setUserName:username];
+                    }
+                }
+            }
+        });
+    }
+}
+
 - (void)authenticationFailed {
     self.window.rootViewController = nil;
     
