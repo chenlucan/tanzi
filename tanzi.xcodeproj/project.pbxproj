@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		07BF568F80DCF123CE09FFBE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4FD8C5FCF01EDE4931D759 /* libPods.a */; };
-		5145C5081BC9DAD2008C2638 /* AuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5145C5071BC9DAD2008C2638 /* AuthManager.m */; settings = {ASSET_TAGS = (); }; };
-		5145C50B1BC9E81C008C2638 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5145C50A1BC9E81C008C2638 /* KeychainItemWrapper.m */; settings = {ASSET_TAGS = (); }; };
-		515438661BEA4D0400EDDEEF /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 515438651BEA4D0400EDDEEF /* README.txt */; settings = {ASSET_TAGS = (); }; };
+		5145C5081BC9DAD2008C2638 /* AuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5145C5071BC9DAD2008C2638 /* AuthManager.m */; };
+		5145C50B1BC9E81C008C2638 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5145C50A1BC9E81C008C2638 /* KeychainItemWrapper.m */; };
+		515438661BEA4D0400EDDEEF /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 515438651BEA4D0400EDDEEF /* README.txt */; };
 		517EDA811BC7B6D700273C27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDA801BC7B6D700273C27 /* main.m */; };
 		517EDA841BC7B6D700273C27 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDA831BC7B6D700273C27 /* AppDelegate.m */; };
 		517EDA871BC7B6D700273C27 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDA861BC7B6D700273C27 /* ViewController.m */; };
@@ -18,18 +18,18 @@
 		517EDA8F1BC7B6D700273C27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 517EDA8D1BC7B6D700273C27 /* Main.storyboard */; };
 		517EDA9A1BC7B6D700273C27 /* tanziTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDA991BC7B6D700273C27 /* tanziTests.m */; };
 		517EDAA51BC7B6D700273C27 /* tanziUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 517EDAA41BC7B6D700273C27 /* tanziUITests.m */; };
-		51A208101BD518D400187D6A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A2080F1BD518D400187D6A /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
-		51A208121BD5201E00187D6A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A208111BD5201E00187D6A /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
-		51A9E3AF1BD5C0190019C9EB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A9E3AE1BD5C0190019C9EB /* LoginViewController.m */; settings = {ASSET_TAGS = (); }; };
-		51A9E3B11BD625B30019C9EB /* fb_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 51A9E3B01BD625B30019C9EB /* fb_logo.png */; settings = {ASSET_TAGS = (); }; };
-		51A9E3B31BD66A2B0019C9EB /* account-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 51A9E3B21BD66A2B0019C9EB /* account-icon.png */; settings = {ASSET_TAGS = (); }; };
-		51CB22751BDB0C86002FBE0F /* MsgFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CB22741BDB0C86002FBE0F /* MsgFormatter.m */; settings = {ASSET_TAGS = (); }; };
-		51D3EC3F1BC80509005BE683 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D3EC3C1BC80509005BE683 /* SecondViewController.m */; settings = {ASSET_TAGS = (); }; };
-		51D3EC401BC80509005BE683 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D3EC3E1BC80509005BE683 /* FirstViewController.m */; settings = {ASSET_TAGS = (); }; };
-		51E7890C1BD9118000012CED /* SignalingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E7890B1BD9118000012CED /* SignalingClient.m */; settings = {ASSET_TAGS = (); }; };
-		51E7890F1BDA12E400012CED /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E7890E1BDA12E400012CED /* ConnectionManager.m */; settings = {ASSET_TAGS = (); }; };
-		51E7AB361BDDFFBC00C6ADA7 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E7AB351BDDFFBC00C6ADA7 /* Connection.m */; settings = {ASSET_TAGS = (); }; };
-		51FCA2E41BC7FDC40080C22A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51FCA2E31BC7FDC40080C22A /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		51A208101BD518D400187D6A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A2080F1BD518D400187D6A /* FBSDKCoreKit.framework */; };
+		51A208121BD5201E00187D6A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A208111BD5201E00187D6A /* FBSDKLoginKit.framework */; };
+		51A9E3AF1BD5C0190019C9EB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A9E3AE1BD5C0190019C9EB /* LoginViewController.m */; };
+		51A9E3B11BD625B30019C9EB /* fb_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 51A9E3B01BD625B30019C9EB /* fb_logo.png */; };
+		51A9E3B31BD66A2B0019C9EB /* account-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 51A9E3B21BD66A2B0019C9EB /* account-icon.png */; };
+		51CB22751BDB0C86002FBE0F /* MsgFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CB22741BDB0C86002FBE0F /* MsgFormatter.m */; };
+		51D3EC3F1BC80509005BE683 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D3EC3C1BC80509005BE683 /* SecondViewController.m */; };
+		51D3EC401BC80509005BE683 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D3EC3E1BC80509005BE683 /* FirstViewController.m */; };
+		51E7890C1BD9118000012CED /* SignalingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E7890B1BD9118000012CED /* SignalingClient.m */; };
+		51E7890F1BDA12E400012CED /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E7890E1BDA12E400012CED /* ConnectionManager.m */; };
+		51E7AB361BDDFFBC00C6ADA7 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E7AB351BDDFFBC00C6ADA7 /* Connection.m */; };
+		51FCA2E41BC7FDC40080C22A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51FCA2E31BC7FDC40080C22A /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -492,7 +492,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos9.2;
 			};
 			name = Debug;
 		};
@@ -528,7 +528,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos9.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -546,7 +547,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lucanchen.tanzi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				SDKROOT = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -561,9 +563,11 @@
 				INFOPLIST_FILE = tanzi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lucanchen.tanzi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				SDKROOT = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
