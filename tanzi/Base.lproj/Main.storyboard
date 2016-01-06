@@ -224,6 +224,9 @@
                                 <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="CONNECT WITH FACEBOOK"/>
+                                <connections>
+                                    <action selector="onFBLogin:" destination="POP-Lh-Yo8" eventType="touchUpInside" id="fT9-46-O58"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
