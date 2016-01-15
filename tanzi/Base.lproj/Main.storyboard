@@ -228,11 +228,23 @@
                                     <action selector="onFBLogin:" destination="POP-Lh-Yo8" eventType="touchUpInside" id="fT9-46-O58"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibU-NM-6U6">
+                                <rect key="frame" x="40" y="463" width="520" height="30"/>
+                                <color key="backgroundColor" red="0.19215686274509802" green="0.70588235294117641" blue="0.015686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Login with Phone Number"/>
+                                <connections>
+                                    <action selector="onPhoneNumberLogin:" destination="POP-Lh-Yo8" eventType="touchUpInside" id="RvB-KU-6GD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="S9H-0O-H7p" firstAttribute="top" secondItem="ibU-NM-6U6" secondAttribute="bottom" constant="37" id="KAY-VF-kDm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="S9H-0O-H7p" secondAttribute="trailing" constant="20" id="RD3-Gs-pSX"/>
                             <constraint firstItem="3M2-dC-Z7w" firstAttribute="top" secondItem="S9H-0O-H7p" secondAttribute="bottom" constant="40" id="aFh-bd-5q4"/>
+                            <constraint firstItem="ibU-NM-6U6" firstAttribute="leading" secondItem="4Gj-F6-P9O" secondAttribute="leadingMargin" constant="20" id="eKX-tf-loA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ibU-NM-6U6" secondAttribute="trailing" constant="20" id="l3c-Ez-Bo8"/>
                             <constraint firstItem="S9H-0O-H7p" firstAttribute="leading" secondItem="4Gj-F6-P9O" secondAttribute="leadingMargin" constant="20" id="nFd-br-3IG"/>
                         </constraints>
                     </view>

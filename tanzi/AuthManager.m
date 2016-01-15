@@ -11,8 +11,11 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
+#import <DigitsKit/DigitsKit.h>
+
 enum LoginSource {
     LoginSource_None,
+    LoginSource_PhoneNumber,
     LoginSource_FB,
     LoginSource_Native
 };
@@ -57,14 +60,26 @@ static AuthManager *instance;
 }
 
 -(void) CheckAuthentication {
-    if ([FBSDKAccessToken currentAccessToken]) {
+    if (self.source_ == LoginSource_FB && [FBSDKAccessToken currentAccessToken]) {
         self.UserId_ = [FBSDKAccessToken currentAccessToken].userID;
         self.source_ = LoginSource_FB;
         [self.delegate authenticationSuccessWithUserId:[FBSDKAccessToken currentAccessToken].userID];
         [self RequestUsername];
+    } else if (self.source_ == LoginSource_PhoneNumber && [[Digits sharedInstance] session]) {
+        self.UserId_ = [[Digits sharedInstance] session].userID;
+        [self.delegate authenticationSuccessWithUserId:self.UserId_];
     } else {
         [self.delegate authenticationFailed];
     }
+}
+
+-(void) LoginWithPhoneNumber {
+    self.source_ = LoginSource_PhoneNumber;
+    [[Digits sharedInstance] authenticateWithCompletion:^(DGTSession *session, NSError *error) {
+        NSLog(@"onPhoneNumberLogin, userid[%@]", session.userID);
+        self.UserId_ = session.userID;
+        [self.delegate authenticationSuccessWithUserId:self.UserId_];
+    }];
 }
 
 -(void) LoginWithFacebook {

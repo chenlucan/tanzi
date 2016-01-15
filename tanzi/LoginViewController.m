@@ -24,6 +24,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)onPhoneNumberLogin:(id)sender {
+    [[AuthManager getInstance] LoginWithPhoneNumber];
+}
+
+
 - (IBAction)onFBLogin:(id)sender {
     [[AuthManager getInstance] LoginWithFacebook];
 }
