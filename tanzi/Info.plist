@@ -29,6 +29,25 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.1.127</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>f4317f444ffb767a359d1c5d6de8678017331a16</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict>
+					<key>consumerKey</key>
+					<string>bwONm7ioibWnS0UQ774cHgp0c</string>
+					<key>consumerSecret</key>
+					<string>jmCMyhChMWg6ymSzTgsGhMNE0VzjhW5N11qdftBU1feXn2QWw8</string>
+				</dict>
+				<key>KitName</key>
+				<string>Digits</string>
+			</dict>
+		</array>
+	</dict>
 	<key>FacebookAppID</key>
 	<string>488487614648056</string>
 	<key>FacebookDisplayName</key>

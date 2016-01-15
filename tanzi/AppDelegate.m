@@ -14,6 +14,9 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
+#import <Fabric/Fabric.h>
+#import <DigitsKit/DigitsKit.h>
+
 @interface AppDelegate () <AuthManagerDelegate>
 @end
 
@@ -36,7 +39,8 @@
 //        UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:rootController];
 //        self.window.rootViewController = navigation;
 //    }
-    
+    [Fabric with:@[[Digits class]]];
+
     return YES;
 }
 
