@@ -137,11 +137,13 @@ static AuthManager *instance;
 -(void) Logout {
     // so i know how to logout
     assert(self.source_ != LoginSource_None);
-    if (!self.fbLoginMgr_) {
+    if (self.source_ == LoginSource_FB && !self.fbLoginMgr_) {
         self.fbLoginMgr_ = [[FBSDKLoginManager alloc] init];
         [self.fbLoginMgr_ logOut];
         [FBSDKAccessToken setCurrentAccessToken:nil];
         NSLog(@"Creating FBLoginManager before logging out");
+    } else if (self.source_ == LoginSource_PhoneNumber) {
+        [[Digits sharedInstance] logOut];
     }
 
     [self.delegate authenticationFailed];
