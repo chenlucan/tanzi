@@ -110,7 +110,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="account-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="2eN-EL-Mc2">
-                                        <rect key="frame" x="214" y="8" width="172" height="172"/>
+                                        <rect key="frame" x="228" y="8" width="144" height="144"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="2eN-EL-Mc2" secondAttribute="height" multiplier="128:128" id="MaR-ex-NaT"/>
                                         </constraints>
@@ -120,10 +120,10 @@
                                 <constraints>
                                     <constraint firstItem="D5a-WN-dGs" firstAttribute="leading" secondItem="zob-ze-C2S" secondAttribute="leadingMargin" id="4ZH-Qw-aqd"/>
                                     <constraint firstItem="2eN-EL-Mc2" firstAttribute="centerX" secondItem="zob-ze-C2S" secondAttribute="centerX" id="VEd-5Q-FiM"/>
-                                    <constraint firstAttribute="bottom" secondItem="2eN-EL-Mc2" secondAttribute="bottom" id="cW2-qZ-eyR"/>
                                     <constraint firstItem="D5a-WN-dGs" firstAttribute="trailing" secondItem="zob-ze-C2S" secondAttribute="trailingMargin" id="f66-8L-N8J"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="D5a-WN-dGs" secondAttribute="bottom" id="oBy-av-wjM"/>
                                     <constraint firstItem="2eN-EL-Mc2" firstAttribute="top" secondItem="zob-ze-C2S" secondAttribute="topMargin" id="prF-pN-cfW"/>
+                                    <constraint firstItem="2eN-EL-Mc2" firstAttribute="height" secondItem="zob-ze-C2S" secondAttribute="height" multiplier="0.8" id="qUz-es-ueM"/>
                                 </constraints>
                             </view>
                         </subviews>
