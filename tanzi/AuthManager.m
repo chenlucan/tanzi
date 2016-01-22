@@ -76,10 +76,12 @@ static AuthManager *instance;
 -(void) LoginWithPhoneNumber {
     self.source_ = LoginSource_PhoneNumber;
     [[Digits sharedInstance] authenticateWithCompletion:^(DGTSession *session, NSError *error) {
-        NSLog(@"onPhoneNumberLogin, userid[%@]", session.userID);
-        self.UserId_ = session.userID;
-        [self.delegate authenticationSuccessWithUserId:self.UserId_];
-        [self.delegate authenticationSuccessWithUsername:session.phoneNumber];
+        if (session && [session.userID length] > 0) {
+            NSLog(@"onPhoneNumberLogin, userid[%@]", session.userID);
+            self.UserId_ = session.userID;
+            [self.delegate authenticationSuccessWithUserId:self.UserId_];
+            [self.delegate authenticationSuccessWithUsername:session.phoneNumber];
+        }
     }];
 }
 
