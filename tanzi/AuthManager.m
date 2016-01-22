@@ -79,6 +79,7 @@ static AuthManager *instance;
         NSLog(@"onPhoneNumberLogin, userid[%@]", session.userID);
         self.UserId_ = session.userID;
         [self.delegate authenticationSuccessWithUserId:self.UserId_];
+        [self.delegate authenticationSuccessWithUsername:session.phoneNumber];
     }];
 }
 
