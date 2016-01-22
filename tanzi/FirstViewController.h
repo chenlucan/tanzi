@@ -1,8 +1,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
-
+@interface FirstViewController : UITableViewController
 - (void)setUserId:(NSString *)uid;
 
 @end
